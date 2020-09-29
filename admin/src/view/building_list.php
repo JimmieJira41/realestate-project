@@ -5,7 +5,7 @@ require './src/model/building_fetch_list_func.php';
   <div class="jumbotron text-center">
     <h1 class="display-4">Building</h1>
     <hr class="my-4">
-    <button class="btn btn-warning btn-create-building" data-toggle="modal" data-target="#Newbuilding">Create new detail building</button>
+    <a class="btn btn-warning btn-create-building" href="./building_new_page.php">Create new detail building</a>
   </div>
   <div id="div1"></div>
   <div class="card m-0 p-0">
@@ -36,7 +36,7 @@ require './src/model/building_fetch_list_func.php';
               <!-- <td scope="row"><?php echo $row_list_building['description_building']; ?></td> -->
               <!-- <td scope="row"><?php echo $row_list_building['amenity_building']; ?></td> -->
               <!-- <td scope="row"><?php echo $row_list_building['location_building']; ?></td> -->
-              <td class="text-center"><button class="btn btn-info btn-view-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">View</button><button class="btn btn-warning btn-edit-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">Edit</button><button class="btn btn-danger btn-delete-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">Delete</button></td>
+              <td class="text-center"><button class="btn btn-info btn-view-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">View</button><a class="btn btn-warning btn-edit-building mr-1" href="building_edit_page.php?id_building=<?php echo $row_list_building['id_building'];?>" value="<?php echo $row_list_building['id_building']; ?>">Edit</a><button class="btn btn-danger btn-delete-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">Delete</button></td>
             </tr>
           <?php
             $number = $number + 1;

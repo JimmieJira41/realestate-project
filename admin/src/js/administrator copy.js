@@ -1,92 +1,149 @@
 $(document).ready(function () {
-    $('.btn-create-new-record-building').click(function () {
-        var title_building = $('.title_building').val();
-        var price_building = $('.price_building').val();
-        var description_building = $('.description_building').val();
-        var amenity_list = document.getElementsByName('amenity_building[]');
-        var location_building = $('.location_building').val();
-        var map_building = $('.map_building').val();
-        var amenity_building = '';
-        for (var i = 0; i < amenity_list.length; i++) {
-            if (amenity_list[i].checked) {
-                amenity_building += "," + amenity_list[i].value;
-            }
-        }
-        if (amenity_building) {
-            amenity_building = amenity_building.substring(1);
-            amenity_building = amenity_building.toString();
-        }
-        $.ajax({
-            type: 'POST',
-            url: './src/model/building_new_func.php',
-            data: {
-                title_building: title_building,
-                price_building: price_building,
-                description_building: description_building,
-                amenity_building: amenity_building,
-                location_building: location_building,
-                map_building: map_building
-            },
-            dataType: "JSON",
-            success: function (notify_create) {
-                swal({
-                    title: notify_create.title,
-                    text: notify_create.text,
-                    icon: notify_create.icon
+    // $('#div1').load('building.php');
+    $('.btn-create-building').click(function () {
+        var header = 'Create new record building';
+        $('#Modalbuilding').modal('show');
+        $('.modal-building').load('./src/view/building_new_form.php');
+        $('#Modalbuilding').on('shown.bs.modal', function () {
+            $('.modal-title').text(header);
+            $('.modal-footer').html(
+                '<button type="cancel" class="btn btn-danger btn-cancel-new-record-building text-uppercase">cancal</button>' +
+                '<button type="submit" class="btn btn-info btn-create-new-record-building text-uppercase">submit</button>'
+            );
+            $('.btn-create-new-record-building').click(function () {
+                var title_building = $('.title_building').val();
+                var price_building = $('.price_building').val();
+                var description_building = $('.description_building').val();
+                var amenity_list = document.getElementsByName('amenity_building[]');
+                var location_building = $('.location_building').val();
+                var amenity_building = '';
+                for (var i = 0; i < amenity_list.length; i++) {
+                    if (amenity_list[i].checked) {
+                        amenity_building += "," + amenity_list[i].value;
+                    }
+                }
+                if (amenity_building) {
+                    amenity_building = amenity_building.substring(2);
+                    console.log(amenity_building);
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: './src/model/building_new_func.php',
+                    data: {
+                        title_building: title_building,
+                        price_building: price_building,
+                        description_building: description_building,
+                        amenity_building: amenity_building,
+                        location_building: location_building
+                    },
+                    dataType: "JSON",
+                    success: function (notify_create) {
+                        swal({
+                            title: notify_create.title,
+                            text: notify_create.text,
+                            icon: notify_create.icon
+                        })
+                            .then((confirm) => {
+                                location.reload()
+                            })
+                    }
                 })
-                    .then((confirm) => {
-                        location.reload()
-                    })
-            }
+            })
+            $('.btn-cancel-new-record-building').click(function () {
+                $('#Modalbuilding').modal('hide');
+                // $('.title_building').val('');
+                // $('.price_building').val('')
+                // $('.description_building').val('')
+                // $('.location_building').val('')
+                // id_building = '';                   
+            });
+            // }
+            // })
         })
-    });
-    $('.btn-save-detail-building').click(function () {
-        var id_building = $('.id_building').val();
-        var title_building = $('.title_building').val();
-        var price_building = $('.price_building').val();
-        var description_building = $('.description_building').val();
-        var amenity_list = document.getElementsByName('amenity_building[]');
-        // var amenity_building = $('.amenity_building').val();
-        var location_building = $('.location_building').val();
-        var map_building = $('.map_building').val();
-        var amenity_building = '';
-        for (var i = 0; i < amenity_list.length; i++) {
-            if (amenity_list[i].checked) {
-                amenity_building += "," + amenity_list[i].value;
-            }
-        }
-        if (amenity_building) {
-            amenity_building = amenity_building.substring(1);
-            amenity_building = amenity_building.toString();
-        }
-        console.log(id_building);
-        $.ajax({
-            type: 'POST',
-            url: './src/model/building_edit_func.php',
-            data: {
-                id_building: id_building,
-                title_building: title_building,
-                price_building: price_building,
-                description_building: description_building,
-                amenity_building: amenity_building,
-                location_building: location_building,
-                map_building: map_building
-            },
-            dataType: "JSON",
-            success: function (notify_update) {
-                swal({
-                    title: notify_update.title,
-                    text: notify_update.text,
-                    icon: notify_update.icon
-                })
-                    .then((confirm) => {
-                        location.reload()
-                    })
-            }
+        $('#Modalbuilding').on('hide.bs.modal', function () {
+            // $('.title_building').val('');
+            // $('.price_building').val('')
+            // $('.description_building').val('')
+            // $('.location_building').val('')
+            // id_building = '';          
         })
     });
 
+    $('.btn-edit-building').click(function () {
+        var id_building = $(this).val();
+        var header = 'Edit detail a building';
+        $('#Modalbuilding').modal('show');
+        $('.modal-building').load('./src/view/building_new_form.php');
+        $('#Modalbuilding').on('shown.bs.modal', function () {
+            $('.modal-title').text(header);
+            $.ajax({
+                type: 'POST',
+                url: './src/model/building_fetch_detail_func.php',
+                data: {
+                    id_building: id_building
+                },
+                dataType: "JSON",
+                success: function (detail) {
+                    $('.title_building').val(detail.title_building);
+                    $('.price_building').val(detail.price_building);
+                    $('.description_building').val(detail.description_building);
+                    $('.amenity_building').val(detail.amenity_building);
+                    $('.location_building').val(detail.location_building);
+                    $('.modal-footer').html(
+                        '<button type="cancel" class="btn btn-danger btn-cancel-detail-building text-uppercase">cancal</button>' +
+                        '<button type="submit" class="btn btn-info btn-save-detail-building text-uppercase">submit</button>'
+                    );
 
+                    $('.btn-save-detail-building').click(function () {
+                        var title_building = $('.title_building').val();
+                        var price_building = $('.price_building').val();
+                        var description_building = $('.description_building').val();
+                        var amenity_building = $('.amenity_building').val();
+                        var location_building = $('.location_building').val();
+                        console.log(title_building);
+                        $.ajax({
+                            type: 'POST',
+                            url: './src/model/building_edit_func.php',
+                            data: {
+                                id_building: id_building,
+                                title_building: title_building,
+                                price_building: price_building,
+                                description_building: description_building,
+                                amenity_building: amenity_building,
+                                location_building: location_building
+                            },
+                            dataType: "JSON",
+                            success: function (notify_update) {
+                                swal({
+                                    title: notify_update.title,
+                                    text: notify_update.text,
+                                    icon: notify_update.icon
+                                })
+                                    .then((confirm) => {
+                                        location.reload()
+                                    })
+                            }
+                        })
+                    })
+                    $('.btn-cancel-detail-building').click(function () {
+                        $('#Modalbuilding').modal('hide');
+                        // $('.title_building').val('');
+                        // $('.price_building').val('')
+                        // $('.description_building').val('')
+                        // $('.location_building').val('')
+                        // id_building = '';                   
+                    });
+                }
+            })
+        })
+        $('#Modalbuilding').on('hide.bs.modal', function () {
+            $('.title_building').val('');
+            $('.price_building').val('')
+            $('.description_building').val('')
+            $('.location_building').val('')
+            id_building = '';
+        })
+    });
 
     $('.btn-view-building').click(function () {
         var id_building = $(this).val();

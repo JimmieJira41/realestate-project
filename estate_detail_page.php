@@ -1,13 +1,12 @@
 <?php
 require "./mysql/connect.php";
-$title = "HP Real Estate | Building Page";
+$title = "HP Real Estate | Estate Page";
 require './src/include/header.php';
 require './src/include/navbar.php';
 ?>
-<div class="container pt-3">
+<div class="container my-4">
     <?php
-    require './src/include/search.php';
-    require './src/view/building_list.php';
+    require './src/view/estate_form_detail.php';
     ?>
 </div>
 <?php

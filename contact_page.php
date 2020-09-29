@@ -1,8 +1,7 @@
 <?php
     require "./mysql/connect.php";
-    $title = "Building";
+    $title = "HP Real Estate | Contact Page";
     require './src/include/header.php';
     require './src/include/navbar.php';
-    require './src/view/building_list.php';
     require './src/include/footer.php';
 ?>

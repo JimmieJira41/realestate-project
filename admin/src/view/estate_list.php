@@ -1,7 +1,7 @@
 <?php
 require './src/model/estate_fetch_list_func.php';
 ?>
-<div class="container pt-4">
+<div class="container pt-4 mb-4">
     <div class="jumbotron text-center">
         <h1 class="display-4">Estate</h1>
         <hr class="my-4">
