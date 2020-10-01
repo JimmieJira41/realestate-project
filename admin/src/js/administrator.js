@@ -3,19 +3,8 @@ $(document).ready(function () {
         var title_building = $('.title_building').val();
         var price_building = $('.price_building').val();
         var description_building = $('.description_building').val();
-        var amenity_list = document.getElementsByName('amenity_building[]');
         var location_building = $('.location_building').val();
         var map_building = $('.map_building').val();
-        var amenity_building = '';
-        for (var i = 0; i < amenity_list.length; i++) {
-            if (amenity_list[i].checked) {
-                amenity_building += "," + amenity_list[i].value;
-            }
-        }
-        if (amenity_building) {
-            amenity_building = amenity_building.substring(1);
-            amenity_building = amenity_building.toString();
-        }
         $.ajax({
             type: 'POST',
             url: './src/model/building_new_func.php',
@@ -23,7 +12,6 @@ $(document).ready(function () {
                 title_building: title_building,
                 price_building: price_building,
                 description_building: description_building,
-                amenity_building: amenity_building,
                 location_building: location_building,
                 map_building: map_building
             },
@@ -34,9 +22,9 @@ $(document).ready(function () {
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                    .then((confirm) => {
-                        location.reload()
-                    })
+                    // .then((confirm) => {
+                    //     location.reload()
+                    // })
             }
         })
     });
@@ -45,20 +33,8 @@ $(document).ready(function () {
         var title_building = $('.title_building').val();
         var price_building = $('.price_building').val();
         var description_building = $('.description_building').val();
-        var amenity_list = document.getElementsByName('amenity_building[]');
-        // var amenity_building = $('.amenity_building').val();
         var location_building = $('.location_building').val();
         var map_building = $('.map_building').val();
-        var amenity_building = '';
-        for (var i = 0; i < amenity_list.length; i++) {
-            if (amenity_list[i].checked) {
-                amenity_building += "," + amenity_list[i].value;
-            }
-        }
-        if (amenity_building) {
-            amenity_building = amenity_building.substring(1);
-            amenity_building = amenity_building.toString();
-        }
         console.log(id_building);
         $.ajax({
             type: 'POST',
@@ -68,7 +44,6 @@ $(document).ready(function () {
                 title_building: title_building,
                 price_building: price_building,
                 description_building: description_building,
-                amenity_building: amenity_building,
                 location_building: location_building,
                 map_building: map_building
             },
@@ -86,10 +61,9 @@ $(document).ready(function () {
         })
     });
 
-
-
     $('.btn-view-building').click(function () {
         var id_building = $(this).val();
+        console.log(id_building);
         var header = 'View deatil a building';
         $('#Modalbuilding').modal('show');
         $('#Modalbuilding').on('shown.bs.modal', function () {
@@ -106,13 +80,8 @@ $(document).ready(function () {
                         '<div class="title"><strong>Title building</strong><p>' + detail.title_building + '</p></div>' +
                         '<div class="price"><strong>Price building</strong><p>' + detail.price_building + '</p></div>' +
                         '<div class="description"><strong>Decription building</strong><p>' + detail.description_building + '</p></div>' +
-                        '<div class="amenity"><strong>Amenity building</strong><p>' + detail.amenity_building + '</p></div>' +
                         '<div class="location"><strong>Location building</strong><p>' + detail.location_building + '</p></div>'
                     )
-                    // $('.title_building').text(detail.title_building);
-                    // $('.price_building').text(detail.price_building)
-                    // $('.description_building').text(detail.description_building)
-                    // $('.location_building').text(detail.location_building)
                     id_building = '';
                 }
             })
@@ -168,7 +137,6 @@ $(document).ready(function () {
                 var title_estate = $('.title_estate').val();
                 var price_estate = $('.price_estate').val();
                 var description_estate = $('.description_estate').val();
-                var environment_estate = $('.environment_estate').val();
                 var location_estate = $('.location_estate').val();
                 console.log(title_estate);
                 $.ajax({
@@ -178,7 +146,6 @@ $(document).ready(function () {
                         title_estate: title_estate,
                         price_estate: price_estate,
                         description_estate: description_estate,
-                        environment_estate: environment_estate,
                         location_estate: location_estate
                     },
                     dataType: "JSON",
@@ -220,7 +187,6 @@ $(document).ready(function () {
                     $('.title_estate').val(detail.title_estate);
                     $('.price_estate').val(detail.price_estate);
                     $('.description_estate').val(detail.description_estate);
-                    $('.environment_estate').val(detail.environment_estate);
                     $('.location_estate').val(detail.location_estate);
                     $('.modal-footer').html(
                         '<button type="cancel" class="btn btn-danger btn-cancel-detail-estate text-uppercase">cancal</button>' +

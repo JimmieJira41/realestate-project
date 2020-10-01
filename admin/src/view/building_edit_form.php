@@ -8,8 +8,6 @@ echo $id_building;
 $q_fetch_detail_building = "SELECT * FROM building WHERE id_building = '$id_building'";
 $result_fetch_detail = mysqli_query($dbcon, $q_fetch_detail_building);
 $detail_building = mysqli_fetch_assoc($result_fetch_detail);
-$amenity_list = $detail_building['amenity_building'];
-$amenitys = explode(",", $amenity_list);
 
 $q_fetch_list_amenity = "SELECT * FROM amenity";
 $result_fetch_list_amenity = mysqli_query($dbcon, $q_fetch_list_amenity);
@@ -39,45 +37,10 @@ $result_fetch_list_environment = mysqli_query($dbcon, $q_fetch_list_environment)
                 </div>
                 <div class="form-group">
                     <label for="description_building">Description building</label>
-                    <textarea type="text" class="form-control description_building" name="description_building" style="width:100%;height:150px"><?php echo $detail_building['description_building']; ?></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="amenity_building">Amenity building</label>
-                    <?php
-                    $number = 1;
-                    while ($row_list_amenity = mysqli_fetch_assoc($result_fetch_list_amenity)) {
-                        if (in_array($row_list_amenity['id_amenity'], $amenitys)) {
-                            $checktag = " <input class='form-check-input' type='checkbox' name='amenity_building[]' value='" . $row_list_amenity['id_amenity'] . "' checked>
-                                        <label class='form-check-label'>" . $row_list_amenity['title_amenity'] . "</label>";
-                        }else{
-                            $checktag = " <input class='form-check-input' type='checkbox' name='amenity_building[]' value='" . $row_list_amenity['id_amenity'] . "'>
-                                        <label class='form-check-label'>" . $row_list_amenity['title_amenity'] . "</label>";
-                        }
-                    ?>
-                        <div class="form-check form-inline">
-                            <?php echo $checktag; ?>
-                            <!-- <input class="form-check-input" type="checkbox" name="amenity_building[]" value="<?php echo $row_list_amenity['id_amenity']; ?>">
-                            <label class="form-check-label"><?php echo $row_list_amenity['title_amenity']; ?></label> -->
-                        </div>
-                    <?php
-                    } ?>
-                </div>
-                <div class="form-group">
-                    <label for="environment_building">Environment building</label>
-                    <?php
-                    $number = 1;
-                    while ($row_list_environment = mysqli_fetch_assoc($result_fetch_list_environment)) {
-                    ?>
-                        <div class="form-check form-inline">
-                            <input class="form-check-input" type="checkbox" value="<?php echo $row_list_environment['id_environment']; ?>">
-                            <label class="form-check-label"><?php echo $row_list_environment['title_environment']; ?></label>
-                        </div>
-                    <?php
-                    } ?>
+                    <textarea type="text" class="form-control description_building" name="description_building" style="width:100%;height:250px"><?php echo $detail_building['description_building']; ?></textarea>
                 </div>
                 <div class="form-group">
                     <label for="location_building">Location building</label>
-                    <!-- <input type="text" class="form-control location_building" name="location_building"> -->
                     <textarea type="text" class="form-control location_building" name="location_building" style="width:100%;height:100px"><?php echo $detail_building['location_building']; ?></textarea>
                 </div>
                 <div class="form-group">

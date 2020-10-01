@@ -6,9 +6,8 @@
     $img_estate = '';
     $price_estate = $_POST['price_estate'];
     $description_estate = $_POST['description_estate'];
-    $environment_estate = $_POST['environment_estate'];
     $location_estate = $_POST['location_estate'];
-    $q_new_detail_estate = "INSERT INTO estate (id_estate, title_estate, img_estate, price_estate, description_estate, environment_estate, location_estate, date_estate) VALUES ('', '$title_estate', '$img_estate', '$price_estate', '$description_estate', '$environment_estate', '$location_estate', NOW())";
+    $q_new_detail_estate = "INSERT INTO estate (id_estate, id_type, title_estate, img_estate, price_estate, description_estate, location_estate, date_estate) VALUES ('', 0, '$title_estate', '$img_estate', '$price_estate', '$description_estate', '$location_estate', NOW())";
     $result_new_detail_estate = mysqli_query($dbcon,$q_new_detail_estate);
     if($result_new_detail_estate){
         $notify_new_detail_estate = [

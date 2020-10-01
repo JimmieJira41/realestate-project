@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fiuld">
-        <a class="navbar-brand" href="#">HP Real Estate</a>
+<nav class="navbar navbar-expand-lg navbar-light text-light position-relative" style="background-color:#4E6625;">
+    <div class="container-fiuld ">
+        <a class="navbar-brand " href="#"><img src="./src/img/logo.png" width="110px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav" style="float:right;">
-            <ul class="navbar-nav">
+        <div class="collapse navbar-collapse position-absolute" id="navbarNav" style="top:20%;left:75%;">
+            <ul class="navbar-nav" style="color: white;font-size:1.05em;">
                 <li class="nav-item active">
-                    <a class="nav-link" href="home_page.php">หน้าหลัก</a>
+                    <a class="nav-link" href="index.php">หน้าหลัก</a>
                 </li>
                 <li>
                     <a class="nav-link" href="building_page.php">ค้นหาอาคาร</a>

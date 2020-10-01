@@ -11,7 +11,6 @@
             'title_estate' => $details['title_estate'],
             'price_estate' => $details['price_estate'],
             'description_estate' => $details['description_estate'],
-            'environment_estate' => $details['environment_estate'],
             'location_estate' => $details['location_estate']
         ];
         echo json_encode($detail_estate);

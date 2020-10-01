@@ -30,33 +30,7 @@ $result_fetch_list_environment = mysqli_query($dbcon, $q_fetch_list_environment)
                 </div>
                 <div class="form-group">
                     <label for="description_building">Description building</label>
-                    <textarea type="text" class="form-control description_building" name="description_building" style="width:100%;height:150px"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="amenity_building">Amenity building</label>
-                    <?php
-                    $number = 1;
-                    while ($row_list_amenity = mysqli_fetch_assoc($result_fetch_list_amenity)) {
-                    ?>
-                        <div class="form-check form-inline">
-                            <input class="form-check-input" type="checkbox" name="amenity_building[]" value="<?php echo $row_list_amenity['id_amenity']; ?>">
-                            <label class="form-check-label"><?php echo $row_list_amenity['title_amenity']; ?></label>
-                        </div>
-                    <?php
-                    } ?>
-                </div>
-                <div class="form-group">
-                    <label for="environment_building">Environment building</label>
-                    <?php
-                    $number = 1;
-                    while ($row_list_environment = mysqli_fetch_assoc($result_fetch_list_environment)) {
-                    ?>
-                        <div class="form-check form-inline">
-                            <input class="form-check-input" type="checkbox" value="<?php echo $row_list_environment['id_environment']; ?>">
-                            <label class="form-check-label"><?php echo $row_list_environment['title_environment']; ?></label>
-                        </div>
-                    <?php
-                    } ?>
+                    <textarea type="text" class="form-control description_building" name="description_building" style="width:100%;height:250px"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="location_building">Location building</label>
