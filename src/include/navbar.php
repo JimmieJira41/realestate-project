@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light text-light position-relative" style="background-color:#4E6625;">
+<nav class="navbar navbar-expand-lg navbar-dark text-light position-relative" style="background-color:#4E6625;">
     <div class="container-fiuld ">
         <a class="navbar-brand " href="#"><img src="./src/img/logo.png" width="110px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

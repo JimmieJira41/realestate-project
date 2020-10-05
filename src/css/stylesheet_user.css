@@ -1,6 +1,40 @@
-body{
+body {
     font-family: 'Prompt', sans-serif;
+    background-color: #E3E3E3;
 }
-.welcome{
+
+.welcome {
     font-family: 'Bebas Neue', cursive;
+}
+
+.card-list-building {
+    overflow: scroll;
+    height: 475px;
+    scrollbar-width: 1px;
+}
+
+.card-list-estate {
+    overflow: scroll;
+    height: 475px;
+    scrollbar-width: 1px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

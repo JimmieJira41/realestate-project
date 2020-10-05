@@ -4,3 +4,9 @@ body{
 .welcome{
     font-family: 'Bebas Neue', cursive;
 }
+
+.table-scrollbar{
+        overflow:scroll;
+        height:500px;
+        scrollbar-width: 5px;
+}

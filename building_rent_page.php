@@ -13,5 +13,6 @@ require './src/model/building_fetch_list_func.php';
     ?>
 </div>
 <?php
+require './src/include/footage.php';
 require './src/include/footer.php';
 ?>

@@ -4,12 +4,22 @@ $title = "HP Real Estate | Estate Page";
 require './src/include/header.php';
 require './src/include/navbar.php';
 ?>
+<div class="container-fiuld text-center position-relative m-auto" style="background: url(./src/img/building-bg.jpg) center center;background-size:cover;width:100%;height:400px;">
+    <div class="position-absolute" style="padding:0;top:40%;width:100%;">
+        <h1 class="display-3 bg-warning py-4" style="opacity:0.75;">ที่ดิน</h1>
+    </div>
+
+</div>
 <div class="container pt-3">
+    <div class="py-4 text-center">
+        <h1>Happieness Realestate</h1>
+    </div>  
     <?php
     require './src/include/search.php';
     require './src/view/estate_list.php';
     ?>
 </div>
 <?php
+require './src/include/footage.php';
 require './src/include/footer.php';
 ?>

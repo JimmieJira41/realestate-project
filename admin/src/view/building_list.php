@@ -7,40 +7,45 @@ require './src/model/building_fetch_list_func.php';
     <hr class="my-4">
     <a class="btn btn-warning btn-create-building" href="./building_new_rent_page.php">Create new detail building</a>
   </div>
-  <div id="div1"></div>
   <div class="card m-0 p-0">
     <div class="card-body m-0 p-0">
       <table class="table table-bordered text-center shadow m-0">
         <thead>
-          <tr class="text-center">
-            <th scope="col">No.</th>
-            <th scope="col">ชื่ออาคาร</th>
-            <th scope="col">ประเภท</th>
-            <!-- <th scope="col">Price building</th> -->
-            <!-- <th scope="col">Description building</th> -->
-            <!-- <th scope="col">Amenity building</th> -->
-            <!-- <th scope="col">Location building</th> -->
-            <th scope="col">Setting</th>
+          <tr class="row p-1 text-center">
+            <th class="col-2 border-0" scope="col">No.</th>
+            <th class="col-4 border-0" scope="col">ชื่ออาคาร</th>
+            <th class="col-2 border-0" scope="col">ประเภท</th>
+            <th class="col-4 border-0" scope="col">Setting</th>
           </tr>
         </thead>
         <tbody>
-          <?php
-          $number = 1;
-          while ($row_list_building = mysqli_fetch_assoc($result_fetch_list_building)) {
-          ?>
-            <tr>
-              <td scope="row"><?php echo $number; ?></td>
-              <td scope="row"><?php echo $row_list_building['title_building']; ?></td>
-              <td scope="row"><?php echo $row_list_building['title_type']; ?></td>
-              <!-- <td scope="row"><?php echo $row_list_building['price_building']; ?></td> -->
-              <!-- <td scope="row"><?php echo $row_list_building['description_building']; ?></td> -->
-              <!-- <td scope="row"><?php echo $row_list_building['amenity_building']; ?></td> -->
-              <!-- <td scope="row"><?php echo $row_list_building['location_building']; ?></td> -->
-              <td class="text-center"><button class="btn btn-info btn-view-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">View</button><a class="btn btn-warning btn-edit-building mr-1" href="building_edit_page.php?id_building=<?php echo $row_list_building['id_building']; ?>" value="<?php echo $row_list_building['id_building']; ?>">Edit</a><button class="btn btn-danger btn-delete-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">Delete</button></td>
-            </tr>
-          <?php
-            $number = $number + 1;
-          } ?>
+          <tr>
+            <td class="p-0" colspan="4">
+              <div class="table-scrollbar p-2">
+                <table class="table">
+                  <tbody class="p-0">
+                    <?php
+                    $number = 1;
+                    while ($row_list_building = mysqli_fetch_assoc($result_fetch_list_building)) {
+                    ?>
+                      <tr class='row p-1'>
+                        <td class="col-2 px-0 " scope="row"><?php echo $number; ?></td>
+                        <td class="col-4 px-0 " scope="row"><?php echo $row_list_building['title_building']; ?></td>
+                        <td class="col-2 px-0 " scope="row"><?php echo $row_list_building['title_type']; ?></td>
+                        <!-- <td scope="row"><?php echo $row_list_building['price_building']; ?></td> -->
+                        <!-- <td scope="row"><?php echo $row_list_building['description_building']; ?></td> -->
+                        <!-- <td scope="row"><?php echo $row_list_building['amenity_building']; ?></td> -->
+                        <!-- <td scope="row"><?php echo $row_list_building['location_building']; ?></td> -->
+                        <td class="col-4 px-0  border-right-0 text-center"><button class="btn btn-info btn-view-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">View</button><a class="btn btn-warning btn-edit-building mr-1" href="building_edit_page.php?id_building=<?php echo $row_list_building['id_building']; ?>" value="<?php echo $row_list_building['id_building']; ?>">Edit</a><button class="btn btn-danger btn-delete-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">Delete</button></td>
+                      </tr>
+                    <?php
+                      $number = $number + 1;
+                    } ?>
+                  </tbody>
+                </table>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

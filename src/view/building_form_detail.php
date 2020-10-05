@@ -51,7 +51,19 @@ require './src/model/building_fetch_detail_func.php';
                         <a class="alert alert-danger d-block text-decoration-none text-center" href="https://www.google.co.th/maps/@18.8256035,98.982795,21z?hl=th" target="_blank">go go!!</a>
                         <hr>
                         <h4><strong class="badge badge-warning">ราคา</strong></h4>
-                        <h4 class="pl-3" style="color:green"><?php echo $details['price_building']; ?></h4>
+                        <?php
+                        if ($details['id_type'] == 1) {
+                            echo "<p class='pl-3' style='color:green'>" . $details['price_building_minimum'] . " - " . $details['price_building_maximum'] . " บาทต่อเดือน</p>";
+                        } else if ($details['id_type'] == 2) {
+                            echo "<p class='pl-3' style='color:green'>" . $details['price_building_sale'] . " บาท</p>";
+                        } else {
+                            echo "<p class='pl-3' style='color:green'>" . $details['price_building_sale'] . " บาท</p>".
+                            "<p class='pl-3' style='color:green'>" . $details['price_building_minimum'] . " - " . $details['price_building_maximum'] . " บาทต่อเดือน</p>";
+                               
+                        }
+
+                        ?>
+                        <!-- <h4 class="pl-3" style="color:green"><?php echo $details['price_building']; ?></h4> -->
                         <hr>
                         <h4><strong class="badge badge-warning">ช่องทางติดต่อ</strong></h4>
                         <h4 class="pl-3"><i class="fas fa-phone-square text-primary"></i>&nbsp;<?php echo '0901325797' ?></h4>
