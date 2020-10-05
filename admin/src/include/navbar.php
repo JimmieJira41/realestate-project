@@ -15,9 +15,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="estate.php">Estate</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="amenity_environment.php">Amenity & Environment</a>
-                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right btn-logout">
                 <li><button type="button" class="btn btn-danger">Logout</button></li>

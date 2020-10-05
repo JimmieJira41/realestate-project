@@ -4,8 +4,8 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse position-absolute" id="navbarNav" style="top:20%;left:75%;">
-            <ul class="navbar-nav" style="color: white;font-size:1.05em;">
+        <div class="collapse navbar-collapse text-light  position-absolute" id="navbarNav" style="top:20%;left:75%;">
+            <ul class="navbar-nav text-light" style="color: white;font-size:1.05em;">
                 <li class="nav-item active">
                     <a class="nav-link" href="index.php">หน้าหลัก</a>
                 </li>

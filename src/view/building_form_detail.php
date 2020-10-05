@@ -1,7 +1,6 @@
 <?php
 
 require './src/model/building_fetch_detail_func.php';
-require './src/model/amenity_fetch_list_func.php';
 
 ?>
 <div class="row">

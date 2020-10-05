@@ -5,17 +5,17 @@ require './src/model/estate_fetch_list_func.php';
     <div class="jumbotron text-center">
         <h1 class="display-4">Estate</h1>
         <hr class="my-4">
-        <button class="btn btn-warning btn-create-estate" data-toggle="modal" data-target="#Newbuilding">Create new record estate</button>
+        <a class="btn btn-warning btn-create-estate" href="estate_new_rent_page.php">Create new record estate</a>
     </div>
     <div class="card m-0 p-0">
         <div class="card-body m-0 p-0">
-            <table class="table table-bordered m-0 p-0">
+            <table class="table table-bordered text-center m-0 p-0">
                 <thead>
                     <tr class="text-center">
                         <th scope="col">No.</th>
-                        <th scope="col">Title estate</th>
-                        <!-- <th scope="col">Image estate</th> -->
-                        <th scope="col">Price estate</th>
+                        <th scope="col">ชื่อที่ดิน</th>
+                        <th scope="col">ประเภท</th>
+                        <!-- <th scope="col">Price estate</th> -->
                         <!-- <th scope="col">Description estate</th> -->
                         <!-- <th scope="col">Amenity estate</th> -->
                         <!-- <th scope="col">Location estate</th> -->
@@ -30,12 +30,12 @@ require './src/model/estate_fetch_list_func.php';
                         <tr>
                             <td scope="row"><?php echo $number; ?></td>
                             <td scope="row"><?php echo $row_list_estate['title_estate']; ?></td>
-                            <!-- <td scope="row"><?php echo $row_list_estate['img_estate']; ?></td> -->
-                            <td scope="row"><?php echo $row_list_estate['price_estate']; ?></td>
+                            <td scope="row"><?php echo $row_list_estate['title_type']; ?></td>
+                            <!-- <td scope="row"><?php echo $row_list_estate['price_estate']; ?></td> -->
                             <!-- <td scope="row"><?php echo $row_list_estate['description_estate']; ?></td> -->
                             <!-- <td scope="row"><?php echo $row_list_estate['amenity_estate']; ?></td> -->
                             <!-- <td scope="row"><?php echo $row_list_estate['location_estate']; ?></td> -->
-                            <td class="text-center"><button class="btn btn-info btn-view-estate mr-1" value="<?php echo $row_list_estate['id_estate']; ?>">View</button><button class="btn btn-warning btn-edit-estate mr-1" value="<?php echo $row_list_estate['id_estate']; ?>">Edit</button><button class="btn btn-danger btn-delete-estate mr-1" value="<?php echo $row_list_estate['id_estate']; ?>">Delete</button></td>
+                            <td class="text-center"><button class="btn btn-info btn-view-estate mr-1" value="<?php echo $row_list_estate['id_estate']; ?>">View</button><a class="btn btn-warning btn-edit-estate mr-1" href="estate_edit_page.php?id_estate=<?php echo $row_list_estate['id_estate']; ?>">Edit</a><button class="btn btn-danger btn-delete-estate mr-1" value="<?php echo $row_list_estate['id_estate']; ?>">Delete</button></td>
                         </tr>
                     <?php
                         $number = $number + 1;

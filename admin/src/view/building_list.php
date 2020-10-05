@@ -5,7 +5,7 @@ require './src/model/building_fetch_list_func.php';
   <div class="jumbotron text-center">
     <h1 class="display-4">Building</h1>
     <hr class="my-4">
-    <a class="btn btn-warning btn-create-building" href="./building_new_page.php">Create new detail building</a>
+    <a class="btn btn-warning btn-create-building" href="./building_new_rent_page.php">Create new detail building</a>
   </div>
   <div id="div1"></div>
   <div class="card m-0 p-0">
@@ -14,9 +14,9 @@ require './src/model/building_fetch_list_func.php';
         <thead>
           <tr class="text-center">
             <th scope="col">No.</th>
-            <th scope="col">Title building</th>
-            <!-- <th scope="col">Image building</th> -->
-            <th scope="col">Price building</th>
+            <th scope="col">ชื่ออาคาร</th>
+            <th scope="col">ประเภท</th>
+            <!-- <th scope="col">Price building</th> -->
             <!-- <th scope="col">Description building</th> -->
             <!-- <th scope="col">Amenity building</th> -->
             <!-- <th scope="col">Location building</th> -->
@@ -31,12 +31,12 @@ require './src/model/building_fetch_list_func.php';
             <tr>
               <td scope="row"><?php echo $number; ?></td>
               <td scope="row"><?php echo $row_list_building['title_building']; ?></td>
-              <!-- <td scope="row"><?php echo $row_list_building['img_building']; ?></td> -->
-              <td scope="row"><?php echo $row_list_building['price_building']; ?></td>
+              <td scope="row"><?php echo $row_list_building['title_type']; ?></td>
+              <!-- <td scope="row"><?php echo $row_list_building['price_building']; ?></td> -->
               <!-- <td scope="row"><?php echo $row_list_building['description_building']; ?></td> -->
               <!-- <td scope="row"><?php echo $row_list_building['amenity_building']; ?></td> -->
               <!-- <td scope="row"><?php echo $row_list_building['location_building']; ?></td> -->
-              <td class="text-center"><button class="btn btn-info btn-view-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">View</button><a class="btn btn-warning btn-edit-building mr-1" href="building_edit_page.php?id_building=<?php echo $row_list_building['id_building'];?>" value="<?php echo $row_list_building['id_building']; ?>">Edit</a><button class="btn btn-danger btn-delete-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">Delete</button></td>
+              <td class="text-center"><button class="btn btn-info btn-view-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">View</button><a class="btn btn-warning btn-edit-building mr-1" href="building_edit_page.php?id_building=<?php echo $row_list_building['id_building']; ?>" value="<?php echo $row_list_building['id_building']; ?>">Edit</a><button class="btn btn-danger btn-delete-building mr-1" value="<?php echo $row_list_building['id_building']; ?>">Delete</button></td>
             </tr>
           <?php
             $number = $number + 1;
@@ -57,7 +57,6 @@ require './src/model/building_fetch_list_func.php';
       </div>
       <div class="modal-body">
         <div class="modal-building">
-          
         </div>
       </div>
       <div class="modal-footer"></div>

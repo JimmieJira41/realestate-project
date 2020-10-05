@@ -17,13 +17,7 @@ require './src/model/building_fetch_detail_func.php';
 </div>
 <div class="container form-body">
     <?php
-    if( $details['id_type'] == 1 ){
-        require './src/view/building_edit_rent_form.php';
-    }else if( $details['id_type'] == 2 ){
-        require './src/view/building_edit_sale_form.php';
-    }else{
-        require './src/view/building_edit_rentandsale_form.php';
-    }
+    require './src/view/building_edit_rent_form.php';
     ?>
 
 </div>
