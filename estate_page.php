@@ -12,7 +12,7 @@ require './src/include/navbar.php';
 </div>
 <div class="container pt-3">
     <div class="py-4 text-center">
-        <h1>Happieness Realestate</h1>
+        <h1>Happieness Estate</h1>
     </div>  
     <?php
     require './src/include/search.php';

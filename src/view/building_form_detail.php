@@ -5,7 +5,9 @@ require './src/model/building_fetch_detail_func.php';
 ?>
 <div class="row">
     <div class="col-12">
-        <div class="alert alert-primary"></div>
+        <div class="alert alert-warning">
+            <p></p>
+        </div>
     </div>
     <div class="col-12 my-2">
         <a class="btn btn-warning" onClick="window.history.back()">กลับหน้าก่อนหน้า</a>
