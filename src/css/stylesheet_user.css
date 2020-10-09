@@ -9,13 +9,13 @@ body {
 
 .card-list-building {
     overflow: scroll;
-    height: 475px;
+    height: 800px;
     scrollbar-width: 1px;
 }
 
 .card-list-estate {
     overflow: scroll;
-    height: 475px;
+    height: 800px;
     scrollbar-width: 1px;
 }
 

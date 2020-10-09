@@ -14,7 +14,7 @@ require './src/include/navbar.php';
         <h1 class="">Happieness Estate</h1>
     </div>
     <?php
-    require './src/include/search.php';
+    require './src/include/search_building.php';
     require './src/view/building_list.php';
     ?>
 </div>

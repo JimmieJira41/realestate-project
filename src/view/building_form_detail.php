@@ -3,16 +3,6 @@
 require './src/model/building_fetch_detail_func.php';
 
 ?>
-<div class="row">
-    <div class="col-12">
-        <div class="alert alert-warning">
-            <p></p>
-        </div>
-    </div>
-    <div class="col-12 my-2">
-        <a class="btn btn-warning" onClick="window.history.back()">กลับหน้าก่อนหน้า</a>
-    </div>
-</div>
 <div class="shadow">
     <div id="carouselExampleControls" style="height:450px;" class="carousel slide mb-3" data-ride="carousel">
         <div class="carousel-inner">
@@ -59,9 +49,8 @@ require './src/model/building_fetch_detail_func.php';
                         } else if ($details['id_type'] == 2) {
                             echo "<p class='pl-3' style='color:green'>" . $details['price_building_sale'] . " บาท</p>";
                         } else {
-                            echo "<p class='pl-3' style='color:green'>" . $details['price_building_sale'] . " บาท</p>".
-                            "<p class='pl-3' style='color:green'>" . $details['price_building_minimum'] . " - " . $details['price_building_maximum'] . " บาทต่อเดือน</p>";
-                               
+                            echo "<p class='pl-3' style='color:green'>" . $details['price_building_sale'] . " บาท</p>" .
+                                "<p class='pl-3' style='color:green'>" . $details['price_building_minimum'] . " - " . $details['price_building_maximum'] . " บาทต่อเดือน</p>";
                         }
 
                         ?>
@@ -78,6 +67,9 @@ require './src/model/building_fetch_detail_func.php';
                     <div class="col-12 my-2">
                         <a class="btn btn-primary d-block text-decoraction-none" href="https://www.facebook.com/messages/t/Happinessestate" target="_blank">ติดต่อเจ้าหน้าที่</a>
                     </div>
+                </div>
+                <div class="col-12 mt-2 px-0">
+                    <a class="btn btn-warning" onClick="window.history.back()">กลับหน้าก่อนหน้า</a>
                 </div>
             </div>
         </div>

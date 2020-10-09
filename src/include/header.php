@@ -1,3 +1,7 @@
+<?php
+session_start();
+require './src/model/search_url.php';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -20,7 +24,7 @@
     .swal-modal .swal-text {
       text-align: center;
     }
-    </style>
+  </style>
 </head>
 
 <body>

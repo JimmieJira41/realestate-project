@@ -1,19 +1,32 @@
 <?php
-
-require './src/model/estate_fetch_list_func.php';
-
+// if (isset($_GET['estate_select_option']) and (isset($_GET['title_type'])) and empty($_GET['page'])) {
+// }
 ?>
-
-<div class="estate-list">
+<div class="estate-list my-2">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 ">
             <div class="card">
-                <div class="card-body pt-1 shadow">
+                <div class="card-body pt-1">
                     <div class="row">
                         <div class="col-12 badge badge-warning m-0 mb-3">
-                            <h3>แนะนำ</h3>
+                            <h4 class="py-1">ที่ดินสำหรับ<?php echo $title_type; ?></h4>
                         </div>
+                        <div class="col-12">
+                            <label>การจัดเรียง : </label>
+                            <a class="btn btn-outline-info" href="?estate_select_option=<?php echo $_GET['estate_select_option'] ?>&title_type=<?php echo $_GET['title_type'] ?>&sort_type=1">อัพเดตล่าสุด</a>
+                            <a class="btn btn-outline-info" href="?estate_select_option=<?php echo $_GET['estate_select_option'] ?>&title_type=<?php echo $_GET['title_type'] ?>&sort_type=2">ราคาน้อย->มาก</a>
+                            <a class="btn btn-outline-info" href="?estate_select_option=<?php echo $_GET['estate_select_option'] ?>&title_type=<?php echo $_GET['title_type'] ?>&sort_type=3">ราคามาก->น้อย</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-body pb-0">
+                    <div class="row">
                         <!-- <div class="col-12 card-list-estate"> -->
+                        <!-- <div class="col-12"> -->
                         <?php
                         while ($row_estate_list = mysqli_fetch_assoc($result_fetch_list_estate)) {
                         ?>
@@ -27,10 +40,11 @@ require './src/model/estate_fetch_list_func.php';
                                                     <div class="img_estate" style="background: url('./src/img/intro.jpg') center center; background-size: 100% 100%;height:125px"></div>
                                                 </div>
                                                 <div class="col-7">
-                                                    <p><strong><?php echo $row_estate_list['title_estate']; ?></strong></p>
+                                                    <h5><?php echo $row_estate_list['title_estate']; ?></h5>
                                                     <span><small>update : <?php echo $row_estate_list['date_update']; ?></small></span>
                                                     <hr>
                                                     <p><?php echo $row_estate_list['location_estate']; ?></p>
+                                                    <p><?php echo $row_estate_list['price_estate_minimum']; ?></p>
                                                 </div>
                                             </div>
                                         </a>
@@ -40,12 +54,13 @@ require './src/model/estate_fetch_list_func.php';
                         <?php
                         }
                         ?>
-                        <div class="col-12 mt-3 text-center">
-                            <?php
-                            require './src/include/pagenation_estate.php'
-                            ?>
-                        </div>
                     </div>
+                    <?php
+                    require './src/include/pagenation_estate.php';
+                    ?>
+                </div>
+                <div class="col-12 my-2">
+                    <a class="btn btn-warning" href="estate_page.php">กลับหน้าก่อนหน้า</a>
                 </div>
             </div>
         </div>
