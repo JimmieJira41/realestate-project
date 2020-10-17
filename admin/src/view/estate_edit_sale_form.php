@@ -3,10 +3,35 @@
         <h2>แก้ไขข้อมูลที่ดินประเภทขายของคุณ!!</h2>
     </div>
     <div class="card-body">
-        <form action="" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="img_estate"><strong>รูปภาพ</strong></label>
-                <input type="file" class="form-control-file img_estate border-primary" value="<?php echo $details['img_estate']; ?>" name="img_estate" multiple>
+        <form id="form-edit-estate" action="./src/model/estate_edit_func.php" method="POST" enctype="multipart/form-data">
+            <div class="card border-primary">
+                <div class="card-body pb-0">
+                    <div class="col-12">
+                        <div class="border" id="preview" style="height: 250px; border-color:black;">
+                            <div class="gallery row position-relative" style="overflow: auto;height: 250px;">
+                                <!-- <div class="row"> -->
+                                <?php
+                                $img_estate = explode(",", $details['img_estate']);
+                                foreach ($img_estate as $img) {
+                                ?>
+                                    <div class="col-4">
+                                        <img src="<?php echo "./src/img/estate/" . $img; ?>" style="width:100%;height:auto;" />
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="img_estate"><strong>รูปภาพ</strong></label>
+                            <input type="file" class="form-control-file img_estate" id="img_estate" name="img_estate[]" multiple>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="title_estate"><strong>ชื่ออาคาร</strong></label>
@@ -34,8 +59,8 @@
             <div class="text-right">
                 <a type="cancel" href="./estate.php" class="btn btn-danger btn-cancel-new-record-estate text-uppercase">cancal</a>
                 <a type="submit" class="btn btn-info btn-save-record-estate-sale text-light text-uppercase">submit</a>
-                <input type="hidden" class="id_type" name="type-estate" value="2">
-                <input type="hidden" class="id_estate" name="id_estate" value="<?php echo $details['id_estate'];?>">
+                <input type="hidden" class="id_type" name="id_type" value="2">
+                <input type="hidden" class="id_estate" name="id_estate" value="<?php echo $details['id_estate']; ?>">
             </div>
         </form>
     </div>

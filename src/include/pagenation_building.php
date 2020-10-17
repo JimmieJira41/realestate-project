@@ -2,7 +2,7 @@
 $q_fetch_building_for_count = "SELECT * FROM building";
 $result_fetch_building_for_count = mysqli_query($dbcon, $q_fetch_building_for_count);
 $total_row = mysqli_num_rows($result_fetch_building_for_count);
-$total_page = ($total_row / $perpage);
+$total_page = ceil($total_row / $perpage);
 $prepage = $page - 1;
 $nextpage = $page + 1;
 

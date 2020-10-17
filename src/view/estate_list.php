@@ -13,7 +13,6 @@ require './src/model/estate_fetch_list_func.php';
                         <div class="col-12 badge badge-warning m-0 mb-3">
                             <h3>แนะนำ</h3>
                         </div>
-                        <!-- <div class="col-12 card-list-estate"> -->
                         <?php
                         while ($row_estate_list = mysqli_fetch_assoc($result_fetch_list_estate)) {
                         ?>
@@ -24,7 +23,7 @@ require './src/model/estate_fetch_list_func.php';
                                         <a style="text-decoration:none; color: black;" href="./estate_detail_page.php?id_estate=<?php echo $row_estate_list['id_estate']; ?>" id="<?php echo $row_estate_list['id_estate']; ?>">
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <div class="img_estate" style="background: url('./src/img/intro.jpg') center center; background-size: 100% 100%;height:125px"></div>
+                                                    <div class="img_estate" style="background: url('./src/img/estate/<?php echo $row_estate_list['img_estate_main']; ?>') center center; background-size: 100% 100%;height:125px"></div>
                                                 </div>
                                                 <div class="col-7">
                                                     <p><strong><?php echo $row_estate_list['title_estate']; ?></strong></p>

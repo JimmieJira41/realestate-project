@@ -5,7 +5,10 @@
  if(isset($_GET['building_select_option']) AND (isset($_GET['title_type'])) AND empty($_GET['page']) ){
     $URL_main = $URL_list[2];
     $_SESSION['url_main'] = $URL_main."&";
-}else if(!isset($_GET['page']) AND empty($_GET['page'])){
+} else if(isset($_GET['estate_select_option']) AND (isset($_GET['title_type'])) AND empty($_GET['page']) ){
+    $URL_main = $URL_list[2];
+    $_SESSION['url_main'] = $URL_main."&";
+} else if(!isset($_GET['page']) AND empty($_GET['page']) AND !isset($_GET['id_building']) AND !isset($_GET['id_estate'])){
     $URL_main = $URL_list[2];
     $_SESSION['url_main'] = $URL_main."?";
 }

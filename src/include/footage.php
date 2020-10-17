@@ -1,17 +1,17 @@
-<div class="containet-fiuld mt-4" style="background-color:#BBBBBB;height:200px;padding-top:30px;">
+<div class="containet-fiuld mt-4" style="background-color:#BBBBBB;padding-top:30px;">
     <div class="container">
         <div class="row" style="color:black;">
-            <div class="col-4 text-center">
-                <h3 class="text-uppercase">Happiness Estate</h3>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-2 text-center">
+                <h4 class="text-uppercase">Happiness Estate</h4>
                 <img src="./src/img/logo.png" width="150px"><br>
             </div>
-            <div class="col-4 text-center">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-2 text-center">
                 <div class="text-center">
                     <h4 class="text-uppercase">About us</h4>
                 </div>
                 <p>ซื้อขายที่ดิน​ บ้าน​ คอนโด​ โรงแรม​ รีสอร์ท​ <br>สิ่งปลูกสร้าง​เพื่อธุรกิจ</p>
             </div>
-            <div class="col-4 text-center">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-2 text-center">
                 <div class="text-center">
                     <h4 class="text-uppercase">Contact</h4>
                 </div>

@@ -1,12 +1,26 @@
-body{
+body {
     font-family: 'Prompt', sans-serif;
+    background-color: #E3E3E3;
 }
-.welcome{
+
+.welcome {
     font-family: 'Bebas Neue', cursive;
 }
 
-.table-scrollbar{
-        overflow:scroll;
-        height:500px;
-        scrollbar-width: 5px;
+.table-scrollbar {
+    overflow: scroll;
+    height: 500px;
+    scrollbar-width: 5px;
+}
+
+@media only screen and (max-width: 575px) {
+    .price_building_minimum {
+        margin-right: 0 !important;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .input-group {
+        /* clear: both; */
+        margin-top: 1em !important;
+    }
 }

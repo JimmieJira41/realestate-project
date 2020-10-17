@@ -3,10 +3,35 @@
         <h2>แก้ไขข้อมูลอาคารประเภทขายของคุณ!!</h2>
     </div>
     <div class="card-body">
-        <form action="" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="img_building"><strong>รูปภาพ</strong></label>
-                <input type="file" class="form-control-file img_building border-primary" value="<?php echo $details['img_building']; ?>" name="img_building" multiple>
+        <form id="form-edit-building" action="./src/model/building_edit_func.php" method="POST" enctype="multipart/form-data">
+            <div class="card border-primary">
+                <div class="card-body pb-0">
+                    <div class="col-12">
+                        <div class="border" id="preview" style="height: 250px; border-color:black;">
+                            <div class="gallery position-relative" style="overflow: auto;height: 250px;">
+                                <div class="row">
+                                    <?php
+                                    $img_building = explode(",", $details['img_building']);
+                                    foreach ($img_building as $img) {
+                                    ?>
+                                        <div class="col-4">
+                                            <img src="<?php echo "./src/img/building/" . $img; ?>" style="width:100%;height:auto;" />
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="img_building"><strong>รูปภาพ</strong></label>
+                            <input type="file" class="form-control-file img_building" id="img_building" name="img_building[]" multiple>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="title_building"><strong>ชื่ออาคาร</strong></label>
@@ -34,8 +59,8 @@
             <div class="text-right">
                 <a type="cancel" href="./building.php" class="btn btn-danger btn-cancel-new-record-building text-uppercase">cancal</a>
                 <a type="submit" class="btn btn-info btn-save-record-building-sale text-light text-uppercase">submit</a>
-                <input type="hidden" class="id_type" name="type-building" value="2">
-                <input type="hidden" class="id_building" name="id_building" value="<?php echo $details['id_building'];?>">
+                <input type="hidden" class="id_type" name="id_type" value="2">
+                <input type="hidden" class="id_building" name="id_building" value="<?php echo $details['id_building']; ?>">
             </div>
         </form>
     </div>

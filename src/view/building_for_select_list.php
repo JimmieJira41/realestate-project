@@ -25,8 +25,6 @@
             <div class="card mt-2">
                 <div class="card-body pb-0">
                     <div class="row">
-                        <!-- <div class="col-12 card-list-building"> -->
-                        <!-- <div class="col-12"> -->
                         <?php
                         while ($row_building_list = mysqli_fetch_assoc($result_fetch_list_building)) {
                         ?>
@@ -55,9 +53,11 @@
                         }
                         ?>
                     </div>
-                    <?php
-                    require './src/include/pagenation_building.php';
-                    ?>
+                    <div class="col-12 mt-3">
+                        <?php
+                        require './src/include/pagenation_building.php';
+                        ?>
+                    </div>
                 </div>
                 <div class="col-12 my-2">
                     <a class="btn btn-warning" href="building_page.php">กลับหน้าก่อนหน้า</a>

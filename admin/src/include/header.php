@@ -1,3 +1,8 @@
+<?php
+
+  require './src/model/session.php';
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -7,17 +12,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./src/css/stylesheet_admin.css">
+  <script src="./src/tinymce/tinymce.min.js"></script>
+
   <!-- Preview multiple image upload -->
-  <!-- <link rel="stylesheet" href="./src/css/image-uploader.min.css"> -->
+  <!-- production -->
+  <!-- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" />
+  <link rel="stylesheet" href="./src/plugin/js/jquery.ui.plupload/css/jquery.ui.plupload.css" type="text/css" />
+  <script src="./src/plugin/js/plupload.full.min.js"></script>
+  <script src="./src/plugin/js/jquery.ui.plupload/jquery.ui.plupload.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script> -->
+  <!-- <link rel="stylesheet" href="./src/css/image-uploader.min.css">
   <!-- <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
   <style>
     .swal-modal .swal-text {
       text-align: center;
+    }
+
+    img {
+      width:100%;
+      height:auto;
     }
   </style>
   <style>
@@ -68,7 +88,7 @@
       background: #555;
     }
 
-    @media screen and (max-width: 1366px) {
+    /* @media screen and (max-width: 1366px) {
       body {
         font-size: 15px;
       }
@@ -107,7 +127,7 @@
       .container {
         width: 90%;
       }
-    }
+    } */
   </style>
 </head>
 

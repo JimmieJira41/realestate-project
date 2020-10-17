@@ -1,108 +1,84 @@
 $(document).ready(function () {
+    $(function () {
+        // Multiple images preview in browser
+        var imagesPreview = function (input, placeToInsertImagePreview) {
+            if (input.files) {
+                var filesAmount = input.files.length;
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        $($.parseHTML('<img class="img-to-upload col-4">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+        $('#img_building').on('change', function (event) {
+            $('div.gallery').html('');
+            imagesPreview(this, 'div.gallery');
+        });
+        $('#img_estate').on('change', function (event) {
+            $('div.gallery').html('');
+            imagesPreview(this, 'div.gallery');
+        });
+    });
     $('.btn-create-new-record-building-rent').click(function () {
-        var id_type = $('.id_type').val()
-        var title_building = $('.title_building').val();
-        var price_building_sale = 0;
-        var price_building_minimum = $('.price_building_minimum').val();
-        var price_building_maximum = $('.price_building_maximum').val();
-        var description_building = $('.description_building').val();
-        var location_building = $('.location_building').val();
-        var map_building = $('.map_building').val();
-        console.log(id_type);
         $.ajax({
-            type: 'POST',
             url: './src/model/building_new_func.php',
-            data: {
-                id_type: id_type,
-                title_building: title_building,
-                price_building_sale: price_building_sale,
-                price_building_minimum: price_building_minimum,
-                price_building_maximum: price_building_maximum,
-                description_building: description_building,
-                location_building: location_building,
-                map_building: map_building
-            },
+            type: 'POST',
+            data: new FormData(document.getElementById('form-new-building')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_create) {
-                alert(notify_create);
                 swal({
                     title: notify_create.title,
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                // .then((confirm) => {
-                //     location.reload()
-                // })
+                    .then((confirm) => {
+                        location.replace('building.php');
+                    })
             }
         })
     });
     $('.btn-create-new-record-building-sale').click(function () {
-        var id_type = $('.id_type').val()
-        var title_building = $('.title_building').val();
-        var price_building_sale = $('.price_building_sale').val();
-        var description_building = $('.description_building').val();
-        var location_building = $('.location_building').val();
-        var map_building = $('.map_building').val();
-        console.log(id_type);
         $.ajax({
-            type: 'POST',
             url: './src/model/building_new_func.php',
-            data: {
-                id_type: id_type,
-                title_building: title_building,
-                price_building_sale: price_building_sale,
-                description_building: description_building,
-                location_building: location_building,
-                map_building: map_building
-            },
+            type: 'POST',
+            data: new FormData(document.getElementById('form-new-building')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_create) {
-                alert(notify_create);
                 swal({
                     title: notify_create.title,
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                // .then((confirm) => {
-                //     location.reload()
-                // })
+                    .then((confirm) => {
+                        location.replace('building.php');
+                    })
             }
         })
     });
     $('.btn-create-new-record-building-rentandsale').click(function () {
-        var id_type = $('.id_type').val()
-        var title_building = $('.title_building').val();
-        var price_building_sale = $('.price_building_sale').val();
-        var price_building_minimum = $('.price_building_minimum').val();
-        var price_building_maximum = $('.price_building_maximum').val();
-        var description_building = $('.description_building').val();
-        var location_building = $('.location_building').val();
-        var map_building = $('.map_building').val();
-        console.log(id_type);
         $.ajax({
-            type: 'POST',
             url: './src/model/building_new_func.php',
-            data: {
-                id_type: id_type,
-                title_building: title_building,
-                price_building_sale: price_building_sale,
-                price_building_minimum: price_building_minimum,
-                price_building_maximum: price_building_maximum,
-                description_building: description_building,
-                location_building: location_building,
-                map_building: map_building
-            },
+            type: 'POST',
+            data: new FormData(document.getElementById('form-new-building')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_create) {
-                alert(notify_create);
                 swal({
                     title: notify_create.title,
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                // .then((confirm) => {
-                //     location.reload()
-                // })
+                    .then((confirm) => {
+                        location.replace('building.php');
+                    })
             }
         })
     });
@@ -110,29 +86,12 @@ $(document).ready(function () {
     // edit detail building section
 
     $('.btn-save-record-building-rent').click(function () {
-        var id_building = $('.id_building').val();
-        var id_type = $('.id_type').val()
-        var title_building = $('.title_building').val();
-        var price_building_minimum = $('.price_building_minimum').val();
-        var price_building_maximum = $('.price_building_maximum').val();
-        var description_building = $('.description_building').val();
-        var location_building = $('.location_building').val();
-        var map_building = $('.map_building').val();
-        console.log(id_type);
-        console.log(id_building);
         $.ajax({
             type: 'POST',
             url: './src/model/building_edit_func.php',
-            data: {
-                id_building: id_building,
-                id_type: id_type,
-                title_building: title_building,
-                price_building_minimum: price_building_minimum,
-                price_building_maximum: price_building_maximum,
-                description_building: description_building,
-                location_building: location_building,
-                map_building: map_building
-            },
+            data: new FormData(document.getElementById('form-edit-building')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_update) {
                 swal({
@@ -148,27 +107,12 @@ $(document).ready(function () {
     });
 
     $('.btn-save-record-building-sale').click(function () {
-        var id_building = $('.id_building').val();
-        var id_type = $('.id_type').val()
-        var title_building = $('.title_building').val();
-        var price_building_sale = $('.price_building_sale').val();
-        var description_building = $('.description_building').val();
-        var location_building = $('.location_building').val();
-        var map_building = $('.map_building').val();
-        console.log(id_type);
-        console.log(price_building_sale);
         $.ajax({
             type: 'POST',
             url: './src/model/building_edit_func.php',
-            data: {
-                id_building: id_building,
-                id_type: id_type,
-                title_building: title_building,
-                price_building_sale: price_building_sale,
-                description_building: description_building,
-                location_building: location_building,
-                map_building: map_building
-            },
+            data: new FormData(document.getElementById('form-edit-building')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_update) {
                 swal({
@@ -184,31 +128,12 @@ $(document).ready(function () {
     });
 
     $('.btn-save-record-building-rentandsale').click(function () {
-        var id_building = $('.id_building').val();
-        var id_type = $('.id_type').val()
-        var title_building = $('.title_building').val();
-        var price_building_sale = $('.price_building_sale').val();
-        var price_building_minimum = $('.price_building_minimum').val();
-        var price_building_maximum = $('.price_building_maximum').val();
-        var description_building = $('.description_building').val();
-        var location_building = $('.location_building').val();
-        var map_building = $('.map_building').val();
-        console.log(id_type);
-        console.log(id_building);
         $.ajax({
             type: 'POST',
             url: './src/model/building_edit_func.php',
-            data: {
-                id_building: id_building,
-                id_type: id_type,
-                title_building: title_building,
-                price_building_sale: price_building_sale,
-                price_building_minimum: price_building_minimum,
-                price_building_maximum: price_building_maximum,
-                description_building: description_building,
-                location_building: location_building,
-                map_building: map_building
-            },
+            data: new FormData(document.getElementById('form-edit-building')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_update) {
                 swal({
@@ -319,28 +244,12 @@ $(document).ready(function () {
     // create detail estate section
 
     $('.btn-create-new-record-estate-rent').click(function () {
-        var id_type = $('.id_type').val()
-        var title_estate = $('.title_estate').val();
-        var price_estate_sale = 0;
-        var price_estate_minimum = $('.price_estate_minimum').val();
-        var price_estate_maximum = $('.price_estate_maximum').val();
-        var description_estate = $('.description_estate').val();
-        var location_estate = $('.location_estate').val();
-        var map_estate = $('.map_estate').val();
-        console.log(id_type);
         $.ajax({
             type: 'POST',
             url: './src/model/estate_new_func.php',
-            data: {
-                id_type: id_type,
-                title_estate: title_estate,
-                price_estate_sale: price_estate_sale,
-                price_estate_minimum: price_estate_minimum,
-                price_estate_maximum: price_estate_maximum,
-                description_estate: description_estate,
-                location_estate: location_estate,
-                map_estate: map_estate
-            },
+            data: new FormData(document.getElementById('form-new-estate')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_create) {
                 alert(notify_create);
@@ -349,32 +258,20 @@ $(document).ready(function () {
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                // .then((confirm) => {
-                //     location.reload()
-                // })
+                .then((confirm) => {
+                    location.replace('estate.php')
+                })
             }
         })
     });
 
     $('.btn-create-new-record-estate-sale').click(function () {
-        var id_type = $('.id_type').val()
-        var title_estate = $('.title_estate').val();
-        var price_estate_sale = $('.price_estate_sale').val();
-        var description_estate = $('.description_estate').val();
-        var location_estate = $('.location_estate').val();
-        var map_estate = $('.map_estate').val();
-        console.log(id_type);
         $.ajax({
             type: 'POST',
             url: './src/model/estate_new_func.php',
-            data: {
-                id_type: id_type,
-                title_estate: title_estate,
-                price_estate_sale: price_estate_sale,
-                description_estate: description_estate,
-                location_estate: location_estate,
-                map_estate: map_estate
-            },
+            data: new FormData(document.getElementById('form-new-estate')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_create) {
                 alert(notify_create);
@@ -383,36 +280,20 @@ $(document).ready(function () {
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                // .then((confirm) => {
-                //     location.reload()
-                // })
+                .then((confirm) => {
+                    location.replace('estate.php');
+                })
             }
         })
     });
 
     $('.btn-create-new-record-estate-rentandsale').click(function () {
-        var id_type = $('.id_type').val()
-        var title_estate = $('.title_estate').val();
-        var price_estate_sale = $('.price_estate_sale').val();
-        var price_estate_minimum = $('.price_estate_minimum').val();
-        var price_estate_maximum = $('.price_estate_maximum').val();
-        var description_estate = $('.description_estate').val();
-        var location_estate = $('.location_estate').val();
-        var map_estate = $('.map_estate').val();
-        console.log(id_type);
         $.ajax({
             type: 'POST',
             url: './src/model/estate_new_func.php',
-            data: {
-                id_type: id_type,
-                title_estate: title_estate,
-                price_estate_sale: price_estate_sale,
-                price_estate_minimum: price_estate_minimum,
-                price_estate_maximum: price_estate_maximum,
-                description_estate: description_estate,
-                location_estate: location_estate,
-                map_estate: map_estate
-            },
+            data: new FormData(document.getElementById('form-new-estate')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_create) {
                 alert(notify_create);
@@ -421,9 +302,9 @@ $(document).ready(function () {
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                // .then((confirm) => {
-                //     location.reload()
-                // })
+                .then((confirm) => {
+                    location.replace('estate.php')
+                })
             }
         })
     });
@@ -431,31 +312,15 @@ $(document).ready(function () {
     // edit detail estate section
 
     $('.btn-save-record-estate-rent').click(function () {
-        var id_estate = $('.id_estate').val();
-        var id_type = $('.id_type').val();
-        var title_estate = $('.title_estate').val();
-        var price_estate_minimum = $('.price_estate_minimum').val();
-        var price_estate_maximum = $('.price_estate_maximum').val();
-        var description_estate = $('.description_estate').val();
-        var location_estate = $('.location_estate').val();
-        var map_estate = $('.map_estate').val();
-        console.log(id_type);
-        console.log(id_estate);
         $.ajax({
             type: 'POST',
             url: './src/model/estate_edit_func.php',
-            data: {
-                id_estate: id_estate,
-                id_type: id_type,
-                title_estate: title_estate,
-                price_estate_minimum: price_estate_minimum,
-                price_estate_maximum: price_estate_maximum,
-                description_estate: description_estate,
-                location_estate: location_estate,
-                map_estate: map_estate
-            },
+            data: new FormData(document.getElementById('form-edit-estate')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_update) {
+                alert(notify_update);
                 swal({
                     title: notify_update.title,
                     text: notify_update.text,
@@ -469,27 +334,12 @@ $(document).ready(function () {
     });
 
     $('.btn-save-record-estate-sale').click(function () {
-        var id_estate = $('.id_estate').val();
-        var id_type = $('.id_type').val()
-        var title_estate = $('.title_estate').val();
-        var price_estate_sale = $('.price_estate_sale').val();
-        var description_estate = $('.description_estate').val();
-        var location_estate = $('.location_estate').val();
-        var map_estate = $('.map_estate').val();
-        console.log(id_type);
-        console.log(price_estate_sale);
         $.ajax({
             type: 'POST',
             url: './src/model/estate_edit_func.php',
-            data: {
-                id_estate: id_estate,
-                id_type: id_type,
-                title_estate: title_estate,
-                price_estate_sale: price_estate_sale,
-                description_estate: description_estate,
-                location_estate: location_estate,
-                map_estate: map_estate
-            },
+            data: new FormData(document.getElementById('form-edit-estate')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_update) {
                 swal({
@@ -505,31 +355,12 @@ $(document).ready(function () {
     });
 
     $('.btn-save-record-estate-rentandsale').click(function () {
-        var id_estate = $('.id_estate').val();
-        var id_type = $('.id_type').val()
-        var title_estate = $('.title_estate').val();
-        var price_estate_sale = $('.price_estate_sale').val();
-        var price_estate_minimum = $('.price_estate_minimum').val();
-        var price_estate_maximum = $('.price_estate_maximum').val();
-        var description_estate = $('.description_estate').val();
-        var location_estate = $('.location_estate').val();
-        var map_estate = $('.map_estate').val();
-        console.log(id_type);
-        console.log(id_estate);
         $.ajax({
             type: 'POST',
             url: './src/model/estate_edit_func.php',
-            data: {
-                id_estate: id_estate,
-                id_type: id_type,
-                title_estate: title_estate,
-                price_estate_sale: price_estate_sale,
-                price_estate_minimum: price_estate_minimum,
-                price_estate_maximum: price_estate_maximum,
-                description_estate: description_estate,
-                location_estate: location_estate,
-                map_estate: map_estate
-            },
+            data: new FormData(document.getElementById('form-edit-estate')),
+            contentType: false,
+            processData: false,
             dataType: "JSON",
             success: function (notify_update) {
                 swal({
@@ -543,8 +374,7 @@ $(document).ready(function () {
             }
         })
     });
-
-
+    
     // view detail estate section
 
     $('.btn-view-estate').click(function () {
@@ -555,7 +385,7 @@ $(document).ready(function () {
             $('.modal-title').text(header);
             $.ajax({
                 type: 'POST',
-                url: './src/model/estate_fetch_detail_func.php',
+                url: './src/model/estate_fetch_detail_for_view_func.php',
                 data: {
                     id_estate: id_estate
                 },
@@ -568,10 +398,6 @@ $(document).ready(function () {
                         '<div class="amenity"><strong>Amenity estate</strong><p>' + detail.amenity_estate + '</p></div>' +
                         '<div class="location"><strong>Location estate</strong><p>' + detail.location_estate + '</p></div>'
                     )
-                    // $('.title_estate').text(detail.title_estate);
-                    // $('.price_estate').text(detail.price_estate)
-                    // $('.description_estate').text(detail.description_estate)
-                    // $('.location_estate').text(detail.location_estate)
                     id_estate = '';
                 }
             })

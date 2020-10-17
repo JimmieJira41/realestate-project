@@ -2,10 +2,10 @@
 require './src/model/estate_fetch_list_func.php';
 ?>
 <div class="container pt-4 mb-4">
-    <div class="jumbotron text-center">
-        <h1 class="display-4">Estate</h1>
+    <div class="jumbotron text-center bg-light">
+        <h1 class="display-4">ที่ดิน</h1>
         <hr class="my-4">
-        <a class="btn btn-warning btn-create-estate" href="estate_new_rent_page.php">Create new record estate</a>
+        <a class="btn btn-warning btn-create-estate" href="estate_new_rent_page.php">สร้างข้อมูลที่ดิน</a>
     </div>
     <div class="card m-0 p-0">
         <div class="card-body m-0 p-0">
@@ -31,7 +31,7 @@ require './src/model/estate_fetch_list_func.php';
                                             <tr class='row p-1'>
                                                 <td class="col-2 px-0 " scope="row"><?php echo $number; ?></td>
                                                 <td class="col-4 px-0 " scope="row"><?php echo $row_list_estate['title_estate']; ?></td>
-                                                <td class="col-3 px-0 " scope="row"><?php echo $row_list_estate['title_type']; ?></td>
+                                                <td class="col-3 px-0 " scope="row"><div class="btn btn-primary"><?php echo $row_list_estate['title_type']; ?></div></td>
                                                 <td class="col-3 px-0  border-right-0 text-center"><button class="btn btn-info btn-view-estate mr-1" value="<?php echo $row_list_estate['id_estate']; ?>">View</button><a class="btn btn-warning btn-edit-estate mr-1" href="estate_edit_page.php?id_estate=<?php echo $row_list_estate['id_estate']; ?>" value="<?php echo $row_list_estate['id_estate']; ?>">Edit</a><button class="btn btn-danger btn-delete-estate mr-1" value="<?php echo $row_list_estate['id_estate']; ?>">Delete</button></td>
                                             </tr>
                                         <?php
