@@ -12,7 +12,9 @@ body {
     height: 500px;
     scrollbar-width: 5px;
 }
-
+img.img-to-upload{
+    max-height: 225px;
+}
 @media only screen and (max-width: 575px) {
     .price_building_minimum {
         margin-right: 0 !important;

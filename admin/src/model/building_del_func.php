@@ -13,6 +13,7 @@
         if($result_del_building){
             foreach($img_building as $img){
                 unlink("../img/building/".$img);
+                unlink("../../../src/img/building/".$img);
             }
             $notify_del_building = [
                 'title' => 'Deleting successful!',

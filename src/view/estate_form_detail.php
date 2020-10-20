@@ -50,28 +50,52 @@ require './src/model/estate_fetch_detail_func.php';
                             <h4><strong class="badge badge-warning">ราคา</strong></h4>
                             <?php
                             if ($details['id_type'] == 1) {
-                                echo "<p class='pl-3' style='color:green'>ราคาเช่า : " . $details['price_estate_minimum'] . " - " . $details['price_estate_maximum'] . " บาทต่อเดือน</p>";
+                                if ($details['price_estate_minimum'] == 0 && $details['price_estate_maximum'] == 0) {
+                                    echo "<p class='px-3 text-left' style='color:green'>กรุณาติดต่อเจ้าหน้าที่</p>";
+                                } else if ($details['price_estate_minimum'] != 0 and $details['price_estate_maximum'] == 0) {
+                                    echo "<p class='px-3 text-left' style='color:green'>ราคาเช่าเริ่มต้นที่ : " . $details['price_estate_minimum'] . " บาทต่อเดือน</p>";
+                                } else {
+                                    echo "<p class='px-3 text-left' style='color:green'>ราคาเช่า : " . $details['price_estate_minimum'] . " - " . $details['price_estate_maximum'] . " บาทต่อเดือน</p>";
+                                }
+                                // echo "<p class='px-3' style='color:green'>ราคาเช่า : " . $details['price_estate_minimum'] . " - " . $details['price_estate_maximum'] . " บาทต่อเดือน</p>";
                             } else if ($details['id_type'] == 2) {
-                                echo "<p class='pl-3' style='color:green'>ราคาขาย :  " . $details['price_estate_sale'] . " บาท</p>";
+                                if ($details['price_estate_sale'] == 0) {
+                                    echo "<p class='px-3 text-left' style='color:green'>กรุณาติดต่อเจ้าหน้าที่</p>";
+                                } else {
+                                    echo "<p class='px-3 text-left' style='color:green'>ราคาขาย : " . $details['price_estate_sale'] . " บาท</p>";
+                                }
+                                // echo "<p class='px-3 text-left' style='color:green'>ราคาขาย :  " . $details['price_estate_sale'] . " บาท</p>";
                             } else {
-                                echo "<p class='pl-3' style='color:green'>ราคาขาย : " . $details['price_estate_sale'] . " บาท</p>" .
-                                    "<p class='pl-3' style='color:green'>ราคาเช่า : " . $details['price_estate_minimum'] . " - " . $details['price_estate_maximum'] . " บาทต่อเดือน</p>";
-                            }
+                                if ($details['price_estate_sale'] != 0) {
+                                    echo "<p class='px-3 text-left' style='color:green'>ราคาขาย : " . $details['price_estate_sale'] . " บาท</p>";
+                                } else if ($details['price_estate_sale'] == 0){
+                                    echo "<p class='px-3 text-left' style='color:green'>กรุณาติดต่อเจ้าหน้าที่</p>";
+                                }
+                                if ($details['price_estate_minimum'] == 0 && $details['price_estate_maximum'] == 0) {
+                                    echo "<p class='px-3 text-left' style='color:green'>กรุณาติดต่อเจ้าหน้าที่</p>";
+                                } else if ($details['price_estate_minimum'] != 0 && $details['price_estate_maximum'] == 0) {
+                                    echo "<p class='px-3 text-left' style='color:green'>ราคาเช่าเริ่มต้นที่ : " . $details['price_estate_minimum'] . " บาทต่อเดือน</p>";
+                                } else if ($details['price_estate_minimum'] != 0 && $details['price_estate_maximum'] != 0) {
+                                    echo "<p class='px-3 text-left' style='color:green'>ราคาเช่า : " . $details['price_estate_minimum'] . " - " . $details['price_estate_maximum'] . " บาทต่อเดือน</p>";
+                                } else if ($details['price_estate_minimum'] == 0 && $details['price_estate_maximum'] != 0) {
+                                    echo "<p class='px-3 text-left' style='color:green'>กรุณาติดต่อเจ้าหน้าที่</p>";
+                                } 
+                            }   
 
                             ?>
                             <hr>
                             <h4><strong class="badge badge-warning">ช่องทางติดต่อ</strong></h4>
-                            <strong class="pl-3"><a href="tel:+0826369782" target="_blank" style="text-decoration:none;color:black"><i class="fas fa-phone-square text-primary"></i>&nbsp;<?php echo '0826369782' ?></a></strong><br>
-                            <strong class="pl-3"><a href="http://line.me/ti/p/~pongpet19" target="_blank" style="text-decoration:none;color:black"><i class="fab fa-line text-success"></i></i>&nbsp;<?php echo 'jjimcmax' ?></a></strong>
+                            <strong class="pl-3"><a href="tel:+0826369782" target="_blank" style="text-decoration:none;color:black"><i class="fas fa-phone-square text-primary"></i>&nbsp; 082-636-9782 </a></strong><br>
+                            <strong class="pl-3"><a href="http://line.me/ti/p/~pongpet19" target="_blank" style="text-decoration:none;color:black"><i class="fab fa-line text-success"></i></i>&nbsp; pongpet19 </a></strong>
                             <hr>
                         </div>
-                        
+
                         <div class="col-lg-8 col-md-8 col-12 col-12 badge-warninged-left ">
                             <h4><strong class="badge badge-warning">รายละเอียด</strong></h4>
                             <p class="pl-3"><?php echo $details['description_estate']; ?></p>
                         </div>
                         <div class="col-12 my-2">
-                            <a class="btn btn-primary d-block text-decoraction-none" href="https://www.facebook.com/messages/t/Happinessestate" target="_blank">ติดต่อเจ้าหน้าที่</a>
+                            <a class="btn btn-primary d-block text-decoraction-none" href="https://www.facebook.com/Happinessestate" target="_blank">ติดต่อเจ้าหน้าที่</a>
                         </div>
                     </div>
                     <div class="col-12 mt-2 px-0">

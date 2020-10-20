@@ -1,41 +1,49 @@
 <div class="card border-primary my-3">
     <div class="card-header text-center">
-        <h2>แก้ไขข้อมูลที่ดินประเภทเช่า-ขายของคุณ!!</h2>
+        <h2>แก้ไขข้อมูลที่ดินประเภท<strong class="badge badge-warning" style="font-size:1em;">เช่า-ขาย</strong>ของคุณ!!</h2>
     </div>
     <div class="card-body">
-    <form id="form-edit-estate" action="./src/model/estate_edit_func.php" method="POST" enctype="multipart/form-data">
+        <form id="form-edit-estate" action="./src/model/estate_edit_func.php" method="POST" enctype="multipart/form-data">
             <div class="card border-primary">
                 <div class="card-body pb-0">
                     <div class="col-12">
                         <div class="border" id="preview" style="height: 250px; border-color:black;">
-                            <div class="gallery row position-relative" style="overflow: auto;height: 250px;">
-                                <!-- <div class="row"> -->
-                                <?php
-                                $img_estate = explode(",", $details['img_estate']);
-                                foreach ($img_estate as $img) {
-                                ?>
-                                    <div class="col-4">
-                                        <img src="<?php echo "./src/img/estate/" . $img; ?>" style="width:100%;height:auto;" />
-                                    </div>
-                                <?php
-                                }
-                                ?>
-                                <!-- </div> -->
+                            <div style="overflow: auto;height: 250px; font-size: 0px">
+                                <div class="img_main_preview position-relative d-inline p-0 m-0" style="font-size: 0px">
+                                    <?php
+                                    ?>
+                                    <div class="position-absolute bg-warning" style="left:90%; width: 15px; height: 15px; z-index:1;"></div>
+                                    <img src="<?php echo "./src/img/building/" . $details['img_building_main']; ?>" class="img-to-upload col-lx-4 col-lg-4 col-md-6 col-sm-12 col-12 m-0 p-0" style="font-size: 0; height: 100%;" />
+                                    <?php
+                                    ?>
+                                </div>
+                                <div class="gallery d-inline p-0 m-0" style="font-size: 0px">
+                                    <?php
+                                    $gallery = explode(",", $details['img_building']);
+                                    foreach ($gallery as $img) {
+                                    ?>
+                                        <img src="<?php echo "./src/img/building/" . $img; ?>" class="img-to-upload col-lx-4 col-lg-4 col-md-6 col-sm-12 col-12 m-0 p-0" style="font-size: 0; height: 100%;">
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="img_estate"><strong>รูปภาพ</strong></label>
-                            <input type="file" class="form-control-file img_estate" id="img_estate" name="img_estate[]" multiple>
+                            <label for="img_building_main"><strong>รูปภาพหลัก</strong></label>
+                            <input type="file" class="form-control-file img_building_main" id="img_building_main" name="img_building_main">
+                            <label for="img_building"><strong>รูปภาพรวม</strong></label>
+                            <input type="file" class="form-control-file img_building" id="img_building" name="img_building[]" multiple>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="title_estate"><strong>ชื่ออาคาร</strong></label>
-                <input type="text" class="form-control title_estate border-primary"  value="<?php echo $details['title_estate']; ?>" name="title_estate">
+                <input type="text" class="form-control title_estate border-primary" value="<?php echo $details['title_estate']; ?>" name="title_estate">
             </div>
             <div class="form-group">
                 <label for="price_estate"><strong>ราคาอาคาร</strong></label>
@@ -56,7 +64,7 @@
             </div>
             <div class="form-group">
                 <label for="description_estate"><strong>รายละเอียด</strong></label>
-                <textarea type="text" class="form-control description_estate border-primary" value="" name="description_estate" style="width:100%;height:250px"><?php echo $details['description_estate']; ?></textarea>
+                <textarea type="text" class="form-control description_estate border-primary" id="description_estate" name="description_estate" style="width:100%;height:250px"><?php echo $details['description_estate']; ?></textarea>
             </div>
             <div class="form-group">
                 <label for="location_estate"><strong>ตำแหน่งที่ตั้ง</strong></label>
@@ -70,8 +78,9 @@
                 <a type="cancel" href="./estate.php" class="btn btn-danger btn-cancel-new-record-estate text-uppercase">cancal</a>
                 <a type="submit" class="btn btn-info btn-save-record-estate-rentandsale text-light text-uppercase">submit</a>
                 <input type="hidden" class="id_type" name="id_type" value="3">
-                <input type="hidden" class="id_estate" name="id_estate" value="<?php echo $details['id_estate'];?>">
+                <input type="hidden" class="id_estate" name="id_estate" value="<?php echo $details['id_estate']; ?>">
             </div>
         </form>
     </div>
 </div>
+<script src="./src/js/tinymce_estate.js"></script>

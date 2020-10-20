@@ -15,17 +15,34 @@ if ($_POST['id_estate']) {
         $title_estate = '';
     }
 
+    if (isset($_FILES['img_estate_main']) and !empty($_FILES['img_estate_main']['name'])) {
+        $img_main_name = explode(".", $_FILES['img_estate_main']['name']);
+        $allowed_ext = array("jpg", "jpeg", "png", "gif");
+        if (in_array($img_main_name[1], $allowed_ext)) {
+            $new_name = substr(md5(rand()), 0, 8) . '.' . $img_main_name[1];
+            $sourcePath = $_FILES['img_estate_main']['tmp_name'];
+            $targetPath = "../img/estate/" . $new_name;
+            $targetPathUser = "../../../src/img/estate/" . $new_name;
+            if (move_uploaded_file($sourcePath, $targetPath)) {
+                copy($targetPath, $targetPathUser);
+                if ($src_img_estate['img_estate_main'] != 'none-img.jpg') {
+                    unlink("../img/estate/" . $src_img_estate['img_estate_main']);
+                }
+                $img_estate_main = $new_name;
+            } else {
+                $img_estate_main = $src_img_estate['img_estate_main'];
+            }
+        } else {
+            $img_estate_main = $src_img_estate['img_estate_main'];
+        }
+    } else {
+        $img_estate_main = $src_img_estate['img_estate_main'];
+    }
+
     if (isset($_FILES) and !empty($_FILES['img_estate']['name'][0])) {
         if (is_array($_FILES['img_estate'])) {
-            if ($src_img_estate['img_estate'] != '' and $src_img_estate['img_estate'] != 'none-img.jpg') {
-                $img_estate_old = explode(",", $src_img_estate['img_estate']);
-                foreach ($img_estate_old as $img_old) {
-                    unlink("../img/estate/" . $img_old);
-                }
-            }
             $img_estate_list = array();
             foreach ($_FILES['img_estate']['name'] as $name => $value) {
-
                 $file_name = explode(".", $_FILES['img_estate']['name'][$name]);
                 $allowed_ext = array("jpg", "jpeg", "png", "gif");
                 if (in_array($file_name[1], $allowed_ext)) {
@@ -35,23 +52,25 @@ if ($_POST['id_estate']) {
                     $targetPathUser = "../../../src/img/estate/" . $new_name;
                     if (move_uploaded_file($sourcePath, $targetPath)) {
                         copy($targetPath, $targetPathUser);
+                        $img_estate_old = explode(",", $src_img_estate['img_estate']);
+                        foreach ($img_estate_old as $img_old) {
+                            if ($img_old != 'none-img.jpg') {
+                                unlink("../img/estate/" . $img_old);
+                            }
+                        }
                         $img_estate_list[$name] = $new_name;
                     } else {
                         $img_estate = "";
                     }
                 } else {
-                    $img_estate_main = $src_img_estate['img_estate_main'];
                     $img_estate = $src_img_estate['img_estate'];
                 }
             }
-            $img_estate_main = $img_estate_list[0];
             $img_estate = implode(",", $img_estate_list);
         } else {
-            $img_estate_main = $src_img_estate['img_estate_main'];
-            $img_estate = "not array";
+            $img_estate = $src_img_estate['img_estate'];
         }
     } else {
-        $img_estate_main = $src_img_estate['img_estate_main'];
         $img_estate = $src_img_estate['img_estate'];
     }
 

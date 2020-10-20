@@ -1,6 +1,6 @@
 <div class="card border-primary my-3">
     <div class="card-header text-center">
-        <h2>แก้ไขข้อมูลอาคารประเภทเช่าของคุณ!!</h2>
+        <h2>แก้ไขข้อมูลอาคารประเภท<strong class="badge badge-warning" style="font-size:1em;">เช่า</strong>ของคุณ!!</h2>
     </div>
     <div class="card-body">
         <form id="form-edit-building" action="./src/model/building_edit_func.php" method="POST" enctype="multipart/form-data">
@@ -8,26 +8,34 @@
                 <div class="card-body pb-0">
                     <div class="col-12">
                         <div class="border" id="preview" style="height: 250px; border-color:black;">
-                            <div class="gallery row position-relative" style="overflow: auto;height: 250px;">
-                                <!-- <div class="row"> -->
+                            <div style="overflow: auto;height: 250px; font-size: 0px">
+                                <div class="img_main_preview position-relative d-inline p-0 m-0" style="font-size: 0px">
                                     <?php
-                                    $img_building = explode(",", $details['img_building']);
-                                    foreach ($img_building as $img) {
                                     ?>
-                                    <div class="col-4">
-                                        <img src="<?php echo "./src/img/building/".$img; ?>" style="width:100%;height:auto;" />
-                                    </div>
+                                    <div class="position-absolute bg-warning" style="left:90%; width: 15px; height: 15px; z-index:1;"></div>
+                                    <img src="<?php echo "./src/img/building/" . $details['img_building_main']; ?>" class="img-to-upload col-lx-4 col-lg-4 col-md-6 col-sm-12 col-12 m-0 p-0" style="font-size: 0; height: 100%;" />
+                                    <?php
+                                    ?>
+                                </div>
+                                <div class="gallery d-inline p-0 m-0" style="font-size: 0px">
+                                    <?php
+                                    $gallery = explode(",", $details['img_building']);
+                                    foreach ($gallery as $img) {
+                                    ?>
+                                        <img src="<?php echo "./src/img/building/" . $img; ?>" class="img-to-upload col-lx-4 col-lg-4 col-md-6 col-sm-12 col-12 m-0 p-0" style="font-size: 0; height: 100%;">
                                     <?php
                                     }
                                     ?>
-                                <!-- </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="img_building"><strong>รูปภาพ</strong></label>
+                            <label for="img_building_main"><strong>รูปภาพหลัก</strong></label>
+                            <input type="file" class="form-control-file img_building_main" id="img_building_main" name="img_building_main">
+                            <label for="img_building"><strong>รูปภาพรวม</strong></label>
                             <input type="file" class="form-control-file img_building" id="img_building" name="img_building[]" multiple>
                         </div>
                     </div>
@@ -50,7 +58,7 @@
             </div>
             <div class="form-group">
                 <label for="description_building"><strong>รายละเอียด</strong></label>
-                <textarea type="text" class="form-control description_building border-primary" name="description_building" style="width:100%;height:250px"><?php echo $details['description_building']; ?></textarea>
+                <textarea type="text" class="form-control description_building border-primary" id="description_building" name="description_building" style="width:100%;height:250px"><?php echo $details['description_building']; ?></textarea>
             </div>
             <div class="form-group">
                 <label for="location_building"><strong>ตำแหน่งที่ตั้ง</strong></label>
@@ -69,3 +77,4 @@
         </form>
     </div>
 </div>
+<script src="./src/js/tinymce_building.js"></script>

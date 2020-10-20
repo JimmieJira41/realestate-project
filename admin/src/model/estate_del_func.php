@@ -12,6 +12,7 @@
         if($result_del_detail_estate){
             foreach($img_estate as $img){
                 unlink("../img/estate/".$img);
+                unlink("../../../src/img/estate/".$img);
             }
             $notify_del_detail_estate = [
                 'title' => 'Delet successful!',

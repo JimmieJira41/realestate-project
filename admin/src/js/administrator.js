@@ -3,19 +3,32 @@ $(document).ready(function () {
         // Multiple images preview in browser
         var imagesPreview = function (input, placeToInsertImagePreview) {
             if (input.files) {
+                $('h3.sign-input-image').html('');
                 var filesAmount = input.files.length;
                 for (i = 0; i < filesAmount; i++) {
                     var reader = new FileReader();
                     reader.onload = function (event) {
-                        $($.parseHTML('<img class="img-to-upload col-4">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        if (placeToInsertImagePreview == "div.img_main_preview") {
+                            $($.parseHTML('<div class="position-absolute bg-warning" style="left:90%; width: 15px; height: 15px; z-index:1;"></div><img class="img-to-upload col-lx-4 col-lg-4 col-md-6 col-sm-12 col-12 m-0 p-0" style="font-size: 0 ;height: 100%">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        } else {
+                            $($.parseHTML('<img class="img-to-upload col-lx-4 col-lg-4 col-md-6 col-sm-12 col-12 m-0 p-0" style="font-size: 0; height: 100%;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        }
                     }
                     reader.readAsDataURL(input.files[i]);
                 }
             }
         };
+        $('#img_building_main').on('change', function (event) {
+            $('div.img_main_preview').html('');
+            imagesPreview(this, 'div.img_main_preview');
+        });
         $('#img_building').on('change', function (event) {
             $('div.gallery').html('');
             imagesPreview(this, 'div.gallery');
+        });
+        $('#img_estate_main').on('change', function (event) {
+            $('div.img_main_preview').html('');
+            imagesPreview(this, 'div.img_main_preview');
         });
         $('#img_estate').on('change', function (event) {
             $('div.gallery').html('');
@@ -207,7 +220,6 @@ $(document).ready(function () {
 
     $('.btn-delete-building').click(function () {
         var id_building = $(this).val();
-        // console.log(id_building);
         swal({
             title: 'Are you sure ?',
             text: 'You can not recover your data after you confirm delete this data !',
@@ -231,12 +243,10 @@ $(document).ready(function () {
                                 icon: notify_delete.icon
                             })
                                 .then((confirm) => {
-                                    location.reload()
+                                    location.reload();
                                 })
                         }
                     });
-                } else {
-                    alert('false');
                 }
             })
     })
@@ -252,15 +262,14 @@ $(document).ready(function () {
             processData: false,
             dataType: "JSON",
             success: function (notify_create) {
-                alert(notify_create);
                 swal({
                     title: notify_create.title,
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                .then((confirm) => {
-                    location.replace('estate.php')
-                })
+                    .then((confirm) => {
+                        location.replace('estate.php')
+                    })
             }
         })
     });
@@ -274,15 +283,14 @@ $(document).ready(function () {
             processData: false,
             dataType: "JSON",
             success: function (notify_create) {
-                alert(notify_create);
                 swal({
                     title: notify_create.title,
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                .then((confirm) => {
-                    location.replace('estate.php');
-                })
+                    .then((confirm) => {
+                        location.replace('estate.php');
+                    })
             }
         })
     });
@@ -296,15 +304,14 @@ $(document).ready(function () {
             processData: false,
             dataType: "JSON",
             success: function (notify_create) {
-                alert(notify_create);
                 swal({
                     title: notify_create.title,
                     text: notify_create.text,
                     icon: notify_create.icon
                 })
-                .then((confirm) => {
-                    location.replace('estate.php')
-                })
+                    .then((confirm) => {
+                        location.replace('estate.php')
+                    })
             }
         })
     });
@@ -320,7 +327,6 @@ $(document).ready(function () {
             processData: false,
             dataType: "JSON",
             success: function (notify_update) {
-                alert(notify_update);
                 swal({
                     title: notify_update.title,
                     text: notify_update.text,
@@ -374,7 +380,7 @@ $(document).ready(function () {
             }
         })
     });
-    
+
     // view detail estate section
 
     $('.btn-view-estate').click(function () {
@@ -406,7 +412,6 @@ $(document).ready(function () {
 
     $('.btn-delete-estate').click(function () {
         var id_estate = $(this).val();
-        console.log(id_estate);
         swal({
             title: 'Are you sure ?',
             text: 'You can not recover your data after you confirm delete this data !',
@@ -439,273 +444,4 @@ $(document).ready(function () {
                 }
             })
     })
-
-    $('.btn-create-amenity').click(function () {
-        var header = 'Create new record amenity';
-        $('#Modalamenity').modal('show');
-        $('.modal-amenity').load('./src/view/amenity_form.php');
-        $('#Modalamenity').on('shown.bs.modal', function () {
-            $('.modal-title').text(header);
-            $('.modal-footer').html(
-                '<button type="cancel" class="btn btn-danger btn-cancel-new-record-amenity text-uppercase">cancal</button>' +
-                '<button type="submit" class="btn btn-info btn-create-new-record-amenity text-uppercase">submit</button>'
-            );
-            $('.btn-create-new-record-amenity').click(function () {
-                var title_amenity = $('.title_amenity').val();
-                console.log(title_amenity);
-                $.ajax({
-                    type: 'POST',
-                    url: './src/model/amenity_new_func.php',
-                    data: {
-                        title_amenity: title_amenity
-                    },
-                    dataType: "JSON",
-                    success: function (notify_create) {
-                        // alert(notify_create);
-                        swal({
-                            title: notify_create.title,
-                            text: notify_create.text,
-                            icon: notify_create.icon
-                        })
-                            .then((confirm) => {
-                                location.reload()
-                            })
-                    }
-                })
-            })
-            $('.btn-cancel-new-record-amenity').click(function () {
-                $('#Modalamenity').modal('hide');
-            });
-        })
-    });
-
-    $('.btn-edit-amenity').click(function () {
-        var id_amenity = $(this).val();
-        console.log(id_amenity);
-        var header = 'Edit detail a amenity';
-        $('#Modalamenity').modal('show');
-        $('.modal-amenity').load('./src/view/amenity_form.php');
-        $('#Modalamenity').on('shown.bs.modal', function () {
-            $('.modal-title').text(header);
-            $.ajax({
-                type: 'POST',
-                url: './src/model/amenity_fetch_detail_func.php',
-                data: {
-                    id_amenity: id_amenity
-                },
-                dataType: "JSON",
-                success: function (detail) {
-                    $('.title_amenity').val(detail.title_amenity);
-                    $('.modal-footer').html(
-                        '<button type="cancel" class="btn btn-danger btn-cancel-detail-amenity text-uppercase">cancal</button>' +
-                        '<button type="submit" class="btn btn-info btn-save-detail-amenity text-uppercase">submit</button>'
-                    );
-
-                    $('.btn-save-detail-amenity').click(function () {
-                        var title_amenity = $('.title_amenity').val();
-                        console.log(title_amenity);
-                        $.ajax({
-                            type: 'POST',
-                            url: './src/model/amenity_edit_func.php',
-                            data: {
-                                id_amenity: id_amenity,
-                                title_amenity: title_amenity
-                            },
-                            dataType: "JSON",
-                            success: function (notify_update) {
-                                swal({
-                                    title: notify_update.title,
-                                    text: notify_update.text,
-                                    icon: notify_update.icon
-                                })
-                                    .then((confirm) => {
-                                        location.reload()
-                                    })
-                            }
-                        })
-                    })
-                    $('.btn-cancel-detail-amenity').click(function () {
-                        $('#Modalamenity').modal('hide');
-                    });
-                }
-            })
-        })
-        $('#Modalamenity').on('hide.bs.modal', function () {
-            $('.title_amenity').val('');
-            $('.price_amenity').val('')
-            $('.description_amenity').val('')
-            $('.location_amenity').val('')
-            id_amenity = '';
-        })
-    });
-
-
-    $('.btn-delete-amenity').click(function () {
-        var id_amenity = $(this).val();
-        console.log(id_amenity);
-        swal({
-            title: 'Are you sure ?',
-            text: 'You can not recover your data after you confirm delete this data !',
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true
-        })
-            .then((confirm) => {
-                if (confirm) {
-                    $.ajax({
-                        type: 'POST',
-                        url: './src/model/amenity_del_func.php',
-                        data: {
-                            id_amenity: id_amenity
-                        },
-                        dataType: "JSON",
-                        success: function (notify_delete) {
-                            swal({
-                                title: notify_delete.title,
-                                text: notify_delete.text,
-                                icon: notify_delete.icon
-                            })
-                                .then((confirm) => {
-                                    location.reload()
-                                })
-                        }
-                    });
-                } else {
-                    alert('false');
-                }
-            })
-    })
-
-    $('.btn-create-environment').click(function () {
-        var header = 'Create new record environment';
-        $('#Modalenvironment').modal('show');
-        $('.modal-environment').load('./src/view/environment_form.php');
-        $('#Modalenvironment').on('shown.bs.modal', function () {
-            $('.modal-title').text(header);
-            $('.modal-footer').html(
-                '<button type="cancel" class="btn btn-danger btn-cancel-new-record-environment text-uppercase">cancal</button>' +
-                '<button type="submit" class="btn btn-info btn-create-new-record-environment text-uppercase">submit</button>'
-            );
-            $('.btn-create-new-record-environment').click(function () {
-                var title_environment = $('.title_environment').val();
-                console.log(title_environment);
-                $.ajax({
-                    type: 'POST',
-                    url: './src/model/environment_new_func.php',
-                    data: {
-                        title_environment: title_environment
-                    },
-                    dataType: "JSON",
-                    success: function (notify_create) {
-                        // alert(notify_create);
-                        swal({
-                            title: notify_create.title,
-                            text: notify_create.text,
-                            icon: notify_create.icon
-                        })
-                            .then((confirm) => {
-                                location.reload()
-                            })
-                    }
-                })
-            })
-            $('.btn-cancel-new-record-environment').click(function () {
-                $('#Modalenvironment').modal('hide');
-            });
-        })
-    });
-
-    $('.btn-edit-environment').click(function () {
-        var id_environment = $(this).val();
-        console.log(id_environment);
-        var header = 'Edit detail a environment';
-        $('#Modalenvironment').modal('show');
-        $('.modal-environment').load('./src/view/environment_form.php');
-        $('#Modalenvironment').on('shown.bs.modal', function () {
-            $('.modal-title').text(header);
-            $.ajax({
-                type: 'POST',
-                url: './src/model/environment_fetch_detail_func.php',
-                data: {
-                    id_environment: id_environment
-                },
-                dataType: "JSON",
-                success: function (detail) {
-                    $('.title_environment').val(detail.title_environment);
-                    $('.modal-footer').html(
-                        '<button type="cancel" class="btn btn-danger btn-cancel-detail-environment text-uppercase">cancal</button>' +
-                        '<button type="submit" class="btn btn-info btn-save-detail-environment text-uppercase">submit</button>'
-                    );
-
-                    $('.btn-save-detail-environment').click(function () {
-                        var title_environment = $('.title_environment').val();
-                        console.log(title_environment);
-                        $.ajax({
-                            type: 'POST',
-                            url: './src/model/environment_edit_func.php',
-                            data: {
-                                id_environment: id_environment,
-                                title_environment: title_environment
-                            },
-                            dataType: "JSON",
-                            success: function (notify_update) {
-                                swal({
-                                    title: notify_update.title,
-                                    text: notify_update.text,
-                                    icon: notify_update.icon
-                                })
-                                    .then((confirm) => {
-                                        location.reload()
-                                    })
-                            }
-                        })
-                    })
-                    $('.btn-cancel-detail-environment').click(function () {
-                        $('#Modalenvironment').modal('hide');
-                    });
-                }
-            })
-        })
-        $('#Modalenvironment').on('hide.bs.modal', function () {
-            $('.title_environment').val('');
-            id_environment = '';
-        })
-    });
-
-
-    $('.btn-delete-environment').click(function () {
-        var id_environment = $(this).val();
-        console.log(id_environment);
-        swal({
-            title: 'Are you sure ?',
-            text: 'You can not recover your data after you confirm delete this data !',
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true
-        })
-            .then((confirm) => {
-                if (confirm) {
-                    $.ajax({
-                        type: 'POST',
-                        url: './src/model/environment_del_func.php',
-                        data: {
-                            id_environment: id_environment
-                        },
-                        dataType: "JSON",
-                        success: function (notify_delete) {
-                            swal({
-                                title: notify_delete.title,
-                                text: notify_delete.text,
-                                icon: notify_delete.icon
-                            })
-                                .then((confirm) => {
-                                    location.reload()
-                                })
-                        }
-                    });
-                } else {
-                    alert('false');
-                }
-            })
-    })
-})
+});

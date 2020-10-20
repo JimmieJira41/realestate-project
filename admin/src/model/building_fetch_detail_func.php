@@ -16,7 +16,6 @@ if (isset($_POST['id_building'])) {
     $id_building = $_POST['id_building'];
     $q_fetch_detail_building = "SELECT * FROM building WHERE id_building = '$id_building'";
     $result_fetch_detail_building = mysqli_query($dbcon, $q_fetch_detail_building);
-    // echo mysqli_error($dbcon);
     if ($result_fetch_detail_building) {
         $details = mysqli_fetch_assoc($result_fetch_detail_building);
         $detail_building = [
@@ -30,6 +29,5 @@ if (isset($_POST['id_building'])) {
             'map_building' => $details['map_building']
         ];
         echo json_encode($detail_building);
-        // header("refresh")
     }
 }

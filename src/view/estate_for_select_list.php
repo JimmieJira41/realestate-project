@@ -1,7 +1,3 @@
-<?php
-// if (isset($_GET['estate_select_option']) and (isset($_GET['title_type'])) and empty($_GET['page'])) {
-// }
-?>
 <div class="estate-list my-2">
     <div class="row">
         <div class="col-12 ">
@@ -25,9 +21,7 @@
             <div class="card mt-2">
                 <div class="card-body pb-0">
                     <div class="row">
-                        <!-- <div class="col-12 card-list-estate"> -->
-                        <!-- <div class="col-12"> -->
-                        <?php
+                    <?php
                         while ($row_estate_list = mysqli_fetch_assoc($result_fetch_list_estate)) {
                         ?>
                             <div class="col-lx-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -37,14 +31,13 @@
                                         <a style="text-decoration:none; color: black;" href="./estate_detail_page.php?id_estate=<?php echo $row_estate_list['id_estate']; ?>" id="<?php echo $row_estate_list['id_estate']; ?>">
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <div class="img_estate" style="background: url('./src/img/intro.jpg') center center; background-size: 100% 100%;height:125px"></div>
+                                                    <div class="img_estate" style="background: url('./src/img/estate/<?php echo $row_estate_list['img_estate_main']; ?>') center center; background-size: 100% 100%;height:125px"></div>
                                                 </div>
                                                 <div class="col-7">
-                                                    <h5><?php echo $row_estate_list['title_estate']; ?></h5>
+                                                    <p><strong><?php echo $row_estate_list['title_estate']; ?></strong></p>
                                                     <span><small>update : <?php echo $row_estate_list['date_update']; ?></small></span>
                                                     <hr>
                                                     <p><?php echo $row_estate_list['location_estate']; ?></p>
-                                                    <p><?php echo $row_estate_list['price_estate_minimum']; ?></p>
                                                 </div>
                                             </div>
                                         </a>

@@ -8,15 +8,21 @@
                 <div class="card-body pb-0">
                     <div class="col-12">
                         <div class="border" id="preview" style="height: 250px; border-color:black;">
-                            <div class="gallery position-relative" style="overflow: auto;height: 250px;">
-                                <h3 class="position-absolute" style="top:50%;left:50%;transform: translate(-50%, -50%);">กรุณาเลือกรูปภาพ</h3>
+                            <div style="overflow: auto;height: 250px; font-size: 0px">
+                                <div class="img_main_preview position-relative d-inline p-0 m-0" style="font-size: 0px">
+                                </div>
+                                <div class="gallery d-inline p-0 m-0" style="font-size: 0px">
+                                </div>
+                                <h3 class="sign-input-image position-absolute" style="top:50%;left:50%;transform: translate(-50%, -50%);">กรุณาเลือกรูปภาพ</h3>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="img_building"><strong>รูปภาพ</strong></label>
+                            <label for="img_building_main"><strong>รูปภาพหลัก</strong></label>
+                            <input type="file" class="form-control-file img_building_main" id="img_building_main" name="img_building_main">
+                            <label for="img_building"><strong>รูปภาพรวม</strong></label>
                             <input type="file" class="form-control-file img_building" id="img_building" name="img_building[]" multiple>
                         </div>
                     </div>

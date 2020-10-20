@@ -23,10 +23,10 @@ require './src/model/building_fetch_list_func.php';
                                         <a style="text-decoration:none; color: black;" href="./building_detail_page.php?id_building=<?php echo $row_building_list['id_building']; ?>" id="<?php echo $row_building_list['id_building']; ?>">
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <div class="img_estate" style="background: url('./src/img/building/<?php echo $row_building_list['img_building_main'];?>') center center; background-size: 100% 100%;height:125px"></div>
+                                                    <div class="img_estate" style="background: url('./src/img/building/<?php echo $row_building_list['img_building_main']; ?>') center center; background-size: 100% 100%;height:125px"></div>
                                                 </div>
                                                 <div class="col-7">
-                                                    <h5><?php echo $row_building_list['title_building']; ?></h5>
+                                                    <p><strong><?php echo $row_building_list['title_building']; ?></strong></p>
                                                     <span><small>update : <?php echo $row_building_list['date_update']; ?></small></span>
                                                     <hr>
                                                     <p><?php echo $row_building_list['location_building']; ?></p>

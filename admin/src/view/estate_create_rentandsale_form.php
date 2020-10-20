@@ -1,6 +1,6 @@
 <div class="card border-primary my-3">
     <div class="card-header text-center">
-        <h2>สร้างข้อมูลที่ดินประเภทเช่า-ขายของคุณ!!</h2>
+        <h2>สร้างข้อมูลที่ดินประเภท<strong class="badge badge-warning" style="font-size:1em;">เช่า-ขาย</strong>ของคุณ!!</h2>
     </div>
     <div class="card-body">
         <form id="form-new-estate" action="" method="POST" enctype="multipart/form-data">
@@ -8,15 +8,21 @@
                 <div class="card-body pb-0">
                     <div class="col-12">
                         <div class="border" id="preview" style="height: 250px; border-color:black;">
-                            <div class="gallery position-relative" style="overflow: auto;height: 250px;">
-                                <h3 class="position-absolute" style="top:50%;left:50%;transform: translate(-50%, -50%);">กรุณาเลือกรูปภาพ</h3>
+                            <div style="overflow: auto;height: 250px; font-size: 0px">
+                                <div class="img_main_preview position-relative d-inline p-0 m-0" style="font-size: 0px">
+                                </div>
+                                <div class="gallery d-inline p-0 m-0" style="font-size: 0px">
+                                </div>
+                                <h3 class="sign-input-image position-absolute" style="top:50%;left:50%;transform: translate(-50%, -50%);">กรุณาเลือกรูปภาพ</h3>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="img_estate"><strong>รูปภาพ</strong></label>
+                            <label for="img_estate_main"><strong>รูปภาพหลัก</strong></label>
+                            <input type="file" class="form-control-file img_estate_main" id="img_estate_main" name="img_estate_main">
+                            <label for="img_estate"><strong>รูปภาพรวม</strong></label>
                             <input type="file" class="form-control-file img_estate" id="img_estate" name="img_estate[]" multiple>
                         </div>
                     </div>
@@ -45,7 +51,7 @@
             </div>
             <div class="form-group">
                 <label for="description_estate"><strong>รายละเอียด</strong></label>
-                <textarea type="text" class="form-control description_estate border-primary" name="description_estate" placeholder="รายละเอียดที่ดิน" style="width:100%;height:250px"></textarea>
+                <textarea type="text" class="form-control description_estate border-primary" id="description_estate" name="description_estate" placeholder="รายละเอียดที่ดิน" style="width:100%;height:250px"></textarea>
             </div>
             <div class="form-group">
                 <label for="location_estate"><strong>ตำแหน่งที่ตั้ง</strong></label>
@@ -63,3 +69,4 @@
         </form>
     </div>
 </div>
+<script src="./src/js/tinymce_estate.js"></script>
