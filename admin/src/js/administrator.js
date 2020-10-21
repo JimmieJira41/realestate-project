@@ -105,17 +105,16 @@ $(document).ready(function () {
             data: new FormData(document.getElementById('form-edit-building')),
             contentType: false,
             processData: false,
-            // dataType: "JSON",
+            dataType: "JSON",
             success: function (notify_update) {
-                alert(notify_update);
-                // swal({
-                //     title: notify_update.title,
-                //     text: notify_update.text,
-                //     icon: notify_update.icon
-                // })
-                //     .then((confirm) => {
-                //         location.reload()
-                //     })
+                swal({
+                    title: notify_update.title,
+                    text: notify_update.text,
+                    icon: notify_update.icon
+                })
+                    .then((confirm) => {
+                        location.reload()
+                    })
             }
         })
     });
@@ -458,8 +457,6 @@ $(document).ready(function () {
                                 })
                         }
                     });
-                } else {
-                    alert('false');
                 }
             })
     })
