@@ -105,16 +105,17 @@ $(document).ready(function () {
             data: new FormData(document.getElementById('form-edit-building')),
             contentType: false,
             processData: false,
-            dataType: "JSON",
+            // dataType: "JSON",
             success: function (notify_update) {
-                swal({
-                    title: notify_update.title,
-                    text: notify_update.text,
-                    icon: notify_update.icon
-                })
-                    .then((confirm) => {
-                        location.reload()
-                    })
+                alert(notify_update);
+                // swal({
+                //     title: notify_update.title,
+                //     text: notify_update.text,
+                //     icon: notify_update.icon
+                // })
+                //     .then((confirm) => {
+                //         location.reload()
+                //     })
             }
         })
     });
@@ -178,9 +179,6 @@ $(document).ready(function () {
                 },
                 dataType: "JSON",
                 success: function (detail) {
-                    //console.log(detail)
-                    // if( detail.id_type)
-                    console.log(detail);
                     if (detail.id_type == 1) {
                         $('.modal-building').html(
                             '<div class="title"><strong>Title building</strong><p>' + detail.title_building + '</p></div>' +
@@ -397,13 +395,34 @@ $(document).ready(function () {
                 },
                 dataType: "JSON",
                 success: function (detail) {
-                    $('.modal-estate').html(
-                        '<div class="title"><strong>Title estate</strong><p>' + detail.title_estate + '</p></div>' +
-                        '<div class="price"><strong>Price estate</strong><p>' + detail.price_estate + '</p></div>' +
-                        '<div class="description"><strong>Decription estate</strong><p>' + detail.description_estate + '</p></div>' +
-                        '<div class="amenity"><strong>Amenity estate</strong><p>' + detail.amenity_estate + '</p></div>' +
-                        '<div class="location"><strong>Location estate</strong><p>' + detail.location_estate + '</p></div>'
-                    )
+                    if (detail.id_type == 1) {
+                        $('.modal-estate').html(
+                            '<div class="title"><strong>Title estate</strong><p>' + detail.title_estate + '</p></div>' +
+                            '<div class="price"><strong>Price estate</strong><p>' + detail.price_estate_minimum + '</p></div>' +
+                            '<div class="price"><strong>Price estate</strong><p>' + detail.price_estate_maximum + '</p></div>' +
+                            '<div class="description"><strong>Decription estate</strong><p>' + detail.description_estate + '</p></div>' +
+                            '<div class="location"><strong>Location estate</strong><p>' + detail.location_estate + '</p></div>' +
+                            '<div class="location"><strong>Location estate</strong><p>' + detail.map_estate + '</p></div>'
+                        )
+                    } else if (detail.id_type == 2) {
+                        $('.modal-estate').html(
+                            '<div class="title"><strong>Title estate</strong><p>' + detail.title_estate + '</p></div>' +
+                            '<div class="price"><strong>Price estate</strong><p>' + detail.price_estate_sale + '</p></div>' +
+                            '<div class="description"><strong>Decription estate</strong><p>' + detail.description_estate + '</p></div>' +
+                            '<div class="location"><strong>Location estate</strong><p>' + detail.location_estate + '</p></div>' +
+                            '<div class="location"><strong>Location estate</strong><p>' + detail.map_estate + '</p></div>'
+                        )
+                    } else {
+                        $('.modal-estate').html(
+                            '<div class="title"><strong>Title estate</strong><p>' + detail.title_estate + '</p></div>' +
+                            '<div class="price"><strong>Price estate</strong><p>' + detail.price_estate_sale + '</p></div>' +
+                            '<div class="price"><strong>Price estate</strong><p>' + detail.price_estate_minimum + '</p></div>' +
+                            '<div class="price"><strong>Price estate</strong><p>' + detail.price_estate_maximum + '</p></div>' +
+                            '<div class="description"><strong>Decription estate</strong><p>' + detail.description_estate + '</p></div>' +
+                            '<div class="location"><strong>Location estate</strong><p>' + detail.location_estate + '</p></div>' +
+                            '<div class="location"><strong>Location estate</strong><p>' + detail.map_estate + '</p></div>'
+                        )
+                    }
                     id_estate = '';
                 }
             })

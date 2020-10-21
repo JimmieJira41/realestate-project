@@ -4,5 +4,6 @@
     require './src/include/header.php';
     require './src/include/navbar.php';
     require './src/view/intro_wetsite.php'; 
+    require './src/model/view_visit_func.php'; 
     require './src/include/footer.php';
 ?>

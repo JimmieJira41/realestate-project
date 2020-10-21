@@ -11,5 +11,6 @@
     </div>
     <?php 
     require './src/include/footage.php';
+require './src/model/view_visit_func.php'; 
     require './src/include/footer.php';
 ?>

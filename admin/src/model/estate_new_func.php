@@ -26,13 +26,13 @@ if (isset($_FILES['img_estate_main']) and !empty($_FILES['img_estate_main']['nam
             copy($targetPath, $targetPathUser);
             $img_estate_main = $new_name;
         } else {
-            $img_estate_main = 'none-img.jpg';
+            $img_estate_main = 'noneimg.jpg';
         }
     } else {
-        $img_estate_main = 'none-img.jpg';
+        $img_estate_main = 'noneimg.jpg';
     }
 } else {
-    $img_estate_main = 'none-img.jpg';
+    $img_estate_main = 'noneimg.jpg';
 }
 
 if (isset($_FILES) and !empty($_FILES['img_estate']['name'][0])) {
@@ -51,18 +51,18 @@ if (isset($_FILES) and !empty($_FILES['img_estate']['name'][0])) {
                     copy($targetPath, $targetPathUser);
                     $img_estate_list[$name] = $new_name;
                 } else {
-                    $img_estate = "";
+                    $img_estate = "noneimg.jpg";
                 }
             } else {
-                $img_estate = "none-img.jpg";
+                $img_estate = "noneimg.jpg";
             }
         }
         $img_estate = implode(",", $img_estate_list);
     } else {
-        $img_estate = "none-img.jpg";
+        $img_estate = "noneimg.jpg";
     }
 } else {
-    $img_estate = "none-img.jpg";
+    $img_estate = "noneimg.jpg";
 }
 
 

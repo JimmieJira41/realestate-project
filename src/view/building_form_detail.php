@@ -6,21 +6,15 @@ require './src/model/building_fetch_detail_func.php';
 <div class="shadow">
     <div id="carouselExampleControls" style="height:450px;" class="carousel slide mb-3" data-ride="carousel">
         <div class="carousel-inner">
-
+            <div class="carousel-item active" style="width:100%; height:450px ;background: url(./src/img/building/<?php echo $details['img_building_main'] ?>) center center; background-repeat: cover; background-size: auto;">
+            </div>
             <?php
             $img_building = explode(",", $details['img_building']);
-            foreach ($img_building as $n => $img) {
-                if ($n == 0) {
+            foreach ($img_building as $img) {
             ?>
-                    <div class="carousel-item active" style="width:100%; height:450px ;background: url(./src/img/building/<?php echo $img; ?>) center center; background-repeat: cover; background-size: auto;">
-                    </div>
-                <?php
-                } else {
-                ?>
-                    <div class="carousel-item" style="width:100%; height:450px ;background: url(./src/img/building/<?php echo $img; ?>) center center; background-repeat: cover; background-size: auto;">
-                    </div>
+                <div class="carousel-item" style="width:100%; height:450px ;background: url(./src/img/building/<?php echo $img; ?>) center center; background-repeat: cover; background-size: auto;">
+                </div>
             <?php
-                }
             }
             ?>
         </div>

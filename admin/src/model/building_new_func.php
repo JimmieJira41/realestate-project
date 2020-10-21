@@ -2,8 +2,6 @@
 
 require "../../mysql/connect.php";
 
-// error_reporting(E_ALL ^ E_NOTICE);
-
 if (isset($_POST['id_type'])) {
     $id_type = $_POST['id_type'];
 } else {
@@ -28,13 +26,13 @@ if(isset($_FILES['img_building_main']) AND !empty($_FILES['img_building_main']['
             copy($targetPath, $targetPathUser);
             $img_building_main = $new_name;
         } else {
-            $img_building_main = "none-img.jpg";
+            $img_building_main = "noneimg.jpg";
         }
     }else{
-        $img_building_main = "none-img.jpg";
+        $img_building_main = "noneimg.jpg";
     }
 }else{
-    $img_building_main = "none-img.jpg";
+    $img_building_main = "noneimg.jpg";
 }
 
 if (isset($_FILES) AND !empty($_FILES['img_building']['name'][0])) {
@@ -52,18 +50,18 @@ if (isset($_FILES) AND !empty($_FILES['img_building']['name'][0])) {
                     copy($targetPath, $targetPathUser);
                     $img_building_list[$name] = $new_name;
                 } else {
-                    $img_building = "";
+                    $img_building = "noneimg.jpg";
                 }
             } else {
-                $img_building = "none-img.jpg";
+                $img_building = "noneimg.jpg";
             }
         }
         $img_building = implode(",", $img_building_list);
     } else {
-        $img_building = "none-img.jpg";
+        $img_building = "noneimg.jpg";
     }
 } else {
-    $img_building = "none-img.jpg";
+    $img_building = "noneimg.jpg";
 }
 
 if (isset($_POST['description_building'])) {

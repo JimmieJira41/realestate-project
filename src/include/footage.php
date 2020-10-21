@@ -20,5 +20,12 @@
                 <p><a href="http://line.me/ti/p/~pongpet19" target="_blank" style="text-decoration:none;color:black"><i class="fab fa-line"></i> pongpet19</a></p>
             </div>
         </div>
+        <div class="row text-center">
+            <div class="offset-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 my-2 text-center" style="font-size: 0.75em">
+                <?php
+                require './src/view/fetch_view_visit.php';
+                ?>
+            </div>
+        </div>
     </div>
 </div>
