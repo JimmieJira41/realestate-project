@@ -24,8 +24,8 @@ if ($_POST['id_building']) {
         if (in_array($img_main_name[1], $allowed_ext)) {
             $new_name = substr(md5(rand()), 0, 8) . '.' . $img_main_name[1];
             $sourcePath = $_FILES['img_building_main']['tmp_name'];
-            $targetPath = "..\\img\\building\\" . $new_name;
-            $targetPathUser = "..\\..\\..\\src\\img\\building\\" . $new_name;
+            $targetPath = "../img/building/" . $new_name;
+            $targetPathUser = "../../../src/img/building/" . $new_name;
             if (move_uploaded_file($sourcePath, $targetPath)) {
                 copy($targetPath, $targetPathUser);
                 $src_img = "";
@@ -55,8 +55,8 @@ if ($_POST['id_building']) {
                 if (in_array($file_name[1], $allowed_ext)) {
                     $new_name = substr(md5(rand()), 0, 8) . '.' . $file_name[1];
                     $sourcePath = $_FILES['img_building']['tmp_name'][$name];
-                    $targetPath = "..\\img\\building\\" . $new_name;
-                    $targetPathUser = "..\\..\\..\\src\\img\\building\\" . $new_name;
+                    $targetPath = "../img/building/" . $new_name;
+                    $targetPathUser = "../../../src/img/building/" . $new_name;
                     if (move_uploaded_file($sourcePath, $targetPath)) {
                         copy($targetPath, $targetPathUser);
                         $img_building_old = explode(",", $src_img_building['img_building']);
